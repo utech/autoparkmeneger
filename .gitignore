@@ -1,0 +1,8 @@
+bin/autopark.exe
+bin/autopark.bin
+bin/updater.exe
+bin/updater.bin
+src/Makefile
+src/object_script.autopark
+src/updater/Makefile
+tmp/
