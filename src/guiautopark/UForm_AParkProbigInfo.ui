@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UForm_AParkProbigInfo</class>
+ <widget class="QWidget" name="UForm_AParkProbigInfo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>695</width>
+    <height>431</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Пробіг автобуса</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>2</number>
+   </property>
+   <property name="margin">
+    <number>2</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox_TOLogTable">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Таблиця Пробіг автобусів</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>2</number>
+      </property>
+      <property name="margin">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QTableWidget" name="tableWidget_ProbigInfo">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <column>
+         <property name="text">
+          <string>Автобус</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>№ ТО</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Поточний пробіг</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Пробіг для ТО</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>+перев./-залиш.</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <item>
+         <widget class="QPushButton" name="pushButton_reload">
+          <property name="text">
+           <string>Поновити</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../images/UAutoParkImg.qrc">
+            <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_probigFilter">
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <property name="leftMargin">
+            <number>2</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>2</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Порівняння пробігу:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_NeedTO">
+             <property name="text">
+              <string>необхідне ТО</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_NotFarTo">
+             <property name="text">
+              <string>менше 500 км. до ТО</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_FilterOnTO">
+          <property name="frameShape">
+           <enum>QFrame::Panel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Sunken</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <property name="leftMargin">
+            <number>2</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>2</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Вид ТО:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_TO1_TO2">
+             <property name="text">
+              <string>TO1+TO2</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_TO1">
+             <property name="text">
+              <string>ТО1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="radioButton_TO2">
+             <property name="text">
+              <string>ТО2</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+  <action name="action_PrintMisyachnyiProbigUsihAvtobusiv">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_pencil_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_pencil_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк місячного пробігу усіх автобусів</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк місячного пробігу усіх автобусів</string>
+   </property>
+  </action>
+  <action name="action_PrintMisyachnyiProbigOneAvtobus">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_pencil_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_pencil_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк місячного пробігу одного автобуса</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк місячного пробігу одного автобуса</string>
+   </property>
+  </action>
+  <action name="action_PrintPerelikAvtobusivNaTO">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/spanner_48.png</normaloff>:/function_icon_set/function_icon_set/spanner_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк переліку автобусів на ТО</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк переліку автобусів на ТО</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../images/UAutoParkImg.qrc"/>
+ </resources>
+ <connections/>
+</ui>

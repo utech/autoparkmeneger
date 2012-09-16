@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UForm_AParkEditTabelPidrozdilivWidget</class>
+ <widget class="QWidget" name="UForm_AParkEditTabelPidrozdilivWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>790</width>
+    <height>544</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Табель</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>2</number>
+   </property>
+   <property name="margin">
+    <number>2</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_pidrozdil">
+         <property name="text">
+          <string>Підрозділ</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_pidrozdil">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_tabelDate">
+         <property name="text">
+          <string>Дата табеля</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="dateEdit_tabelDate">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="displayFormat">
+          <string>MM.yyyy</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_poshuk">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Пошук: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_dateFilter">
+         <property name="text">
+          <string>Дата</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="dateEdit_dateFilter">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="displayFormat">
+          <string>dd.MM</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_vodiyFilter">
+         <property name="text">
+          <string>Працівник</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBox_vodiyFilter">
+         <property name="minimumSize">
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_findCell">
+         <property name="text">
+          <string>Знайти</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../images/UAutoParkImg.qrc">
+           <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-search-016x016.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-search-016x016.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTableWidget" name="tableWidget_tabel">
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+  <action name="action_reloadTabel">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</iconset>
+   </property>
+   <property name="text">
+    <string>Поновити показники табеля</string>
+   </property>
+   <property name="toolTip">
+    <string>Поновлення показників табеля з бази даних без їх зміни</string>
+   </property>
+  </action>
+  <action name="action_printTabel">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк табеля</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк табеля за поточний місяць</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>dateEdit_tabelDate</tabstop>
+  <tabstop>dateEdit_dateFilter</tabstop>
+  <tabstop>comboBox_vodiyFilter</tabstop>
+  <tabstop>pushButton_findCell</tabstop>
+  <tabstop>tableWidget_tabel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../images/UAutoParkImg.qrc"/>
+ </resources>
+ <connections/>
+</ui>

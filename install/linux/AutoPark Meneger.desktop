@@ -1,0 +1,19 @@
+[Desktop Entry]
+Comment[uk]=Господарська діяльність підприємств, що займаються пасажирськими перевезеннями
+Comment=Господарська діяльність підприємств, що займаються пасажирськими перевезеннями
+Exec=/home/roman/devel/autoparkmeneger/bin/autopark
+GenericName[uk]=Господарська діяльність підприємств, що займаються пасажирськими перевезеннями
+GenericName=Господарська діяльність підприємств, що займаються пасажирськими перевезеннями
+Icon=/home/roman/devel/autoparkmeneger/src/images/small/bus-32x32.png
+MimeType=
+Name[uk]=Автопарк менеджер
+Name=Автопарк менеджер
+Path=/home/roman/devel/autoparkmeneger/bin
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

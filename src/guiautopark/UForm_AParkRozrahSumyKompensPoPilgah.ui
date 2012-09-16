@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UForm_AParkRozrahSumyKompensPoPilgah</class>
+ <widget class="QWidget" name="UForm_AParkRozrahSumyKompensPoPilgah">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>747</width>
+    <height>443</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Шляхові листи</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>2</number>
+   </property>
+   <property name="margin">
+    <number>2</number>
+   </property>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QGroupBox" name="groupBox_curRecord">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Поточний Розрахунок суми компенсації</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <property name="margin">
+        <number>2</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_date">
+             <property name="text">
+              <string>Місяць/Рік</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateEdit" name="dateEdit_date">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="displayFormat">
+              <string>MM.yyyy</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_avtozapovn">
+           <property name="text">
+            <string>Автозап.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_vyruchka">
+             <property name="text">
+              <string>Виручка від перевезення</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_vyruchka">
+             <property name="minimumSize">
+              <size>
+               <width>90</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <double>1000000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_taryf">
+             <property name="text">
+              <string>Тариф за 1 пас./год</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_taryf">
+             <property name="minimumSize">
+              <size>
+               <width>90</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <double>1000000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_kilkPerevezPlatnPasaj">
+             <property name="text">
+              <string>Кількість перевез. пасажирів, що оплат.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_kilkPerevezPlatnPasaj">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>100000</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_koef">
+             <property name="text">
+              <string>Коефіцієнт затверджений у районі</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_koef">
+             <property name="minimumSize">
+              <size>
+               <width>90</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="decimals">
+              <number>4</number>
+             </property>
+             <property name="maximum">
+              <double>1000000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_kilkPilgovykiv">
+             <property name="text">
+              <string>Кількість пільговиків</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_kilkPilgovykiv">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>100000</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_kilkVrahPilgovykiv">
+             <property name="text">
+              <string>Кількість пільговиків, що врахов.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_kilkVrahPilgovykiv">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>100000</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_prymitka">
+             <property name="text">
+              <string>Примітка</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_prymitka">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_UForm_AParkRozrahSumyKompensPoPilgah">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>2</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Таблиця &quot;Розрахунок суми компенсації&quot;</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>2</number>
+       </property>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_RozrahSumyKompens">
+         <property name="editTriggers">
+          <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>id</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Місяць/Рік</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Виручка перевез.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Тариф пас./км.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>К-сть платн.пас.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Коеф. (затвердж.)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>К-сть пільговиків</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>К-сть пільгов.врах.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Примітка</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pushButton_reload">
+           <property name="text">
+            <string>Поновити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images/UAutoParkImg.qrc">
+             <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_create">
+           <property name="text">
+            <string>Створити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images/UAutoParkImg.qrc">
+             <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-add-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-add-032x032.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_delete">
+           <property name="text">
+            <string>Видалити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images/UAutoParkImg.qrc">
+             <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-remove-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-remove-032x032.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+  <action name="action_printSumaKompensPoPilgah">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/designfloat_48.png</normaloff>:/function_icon_set/function_icon_set/designfloat_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Розрахунок суми компенсації</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк розрахунку суми компенсації за пільговий проїзд</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>dateEdit_date</tabstop>
+  <tabstop>pushButton_avtozapovn</tabstop>
+  <tabstop>doubleSpinBox_vyruchka</tabstop>
+  <tabstop>doubleSpinBox_taryf</tabstop>
+  <tabstop>spinBox_kilkPerevezPlatnPasaj</tabstop>
+  <tabstop>doubleSpinBox_koef</tabstop>
+  <tabstop>spinBox_kilkPilgovykiv</tabstop>
+  <tabstop>spinBox_kilkVrahPilgovykiv</tabstop>
+  <tabstop>lineEdit_prymitka</tabstop>
+  <tabstop>tableWidget_RozrahSumyKompens</tabstop>
+  <tabstop>pushButton_reload</tabstop>
+  <tabstop>pushButton_create</tabstop>
+  <tabstop>pushButton_delete</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../images/UAutoParkImg.qrc"/>
+ </resources>
+ <connections/>
+</ui>

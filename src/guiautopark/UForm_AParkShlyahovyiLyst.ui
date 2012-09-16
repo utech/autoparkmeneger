@@ -1,0 +1,1546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UForm_AParkShlyahovyiLyst</class>
+ <widget class="QWidget" name="UForm_AParkShlyahovyiLyst">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>904</width>
+    <height>585</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Шляхові листи</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>4</number>
+   </property>
+   <property name="margin">
+    <number>2</number>
+   </property>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QGroupBox" name="groupBox_curRecord">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Поточний Шляховий лист</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <property name="margin">
+        <number>2</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_18">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_ShlyahovyiLystNumber">
+             <property name="text">
+              <string>№ шляхового листа</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_ShlyahovyiLystNumber">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>999999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_auto">
+             <property name="text">
+              <string>Автобус</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox_auto">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_vodiy">
+             <property name="text">
+              <string>Водій</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox_vodiy">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_17">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_marshrut">
+             <property name="text">
+              <string>Маршрут</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox_marshrut">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_mtGrafNum">
+             <property name="text">
+              <string>М-т № граф.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_mtGrafNum">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_mtZminaNum">
+             <property name="text">
+              <string>М-т № зміни</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_mtZminaNum">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QCheckBox" name="checkBox_korekciya">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>Коригув.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="toolButton_readDefaultMarshrutZnach">
+             <property name="text">
+              <string>Читати знач.</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../images/UAutoParkImg.qrc">
+               <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-site-map-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-site-map-032x032.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>12</width>
+               <height>12</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_nochivlya">
+             <property name="text">
+              <string>Ночівля</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox_nochivlya"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_vyizdDate">
+             <property name="text">
+              <string>Дата виїзду</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateTimeEdit" name="dateTimeEdit_vyizdDate">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximumDateTime">
+              <datetime>
+               <hour>23</hour>
+               <minute>59</minute>
+               <second>59</second>
+               <year>2100</year>
+               <month>12</month>
+               <day>31</day>
+              </datetime>
+             </property>
+             <property name="minimumDateTime">
+              <datetime>
+               <hour>0</hour>
+               <minute>0</minute>
+               <second>0</second>
+               <year>1950</year>
+               <month>1</month>
+               <day>1</day>
+              </datetime>
+             </property>
+             <property name="displayFormat">
+              <string>dd.MM.yyyy</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_zaizdDate">
+             <property name="text">
+              <string>Дата заїзду</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateTimeEdit" name="dateTimeEdit_zaizdDate">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximumDateTime">
+              <datetime>
+               <hour>23</hour>
+               <minute>59</minute>
+               <second>59</second>
+               <year>2100</year>
+               <month>12</month>
+               <day>31</day>
+              </datetime>
+             </property>
+             <property name="minimumDateTime">
+              <datetime>
+               <hour>0</hour>
+               <minute>0</minute>
+               <second>0</second>
+               <year>1950</year>
+               <month>1</month>
+               <day>1</day>
+              </datetime>
+             </property>
+             <property name="displayFormat">
+              <string>dd.MM.yyyy</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_22">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_toZvitDate">
+             <property name="text">
+              <string>Дата звітності</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateTimeEdit" name="dateTimeEdit_toZvitDate">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximumDateTime">
+              <datetime>
+               <hour>23</hour>
+               <minute>59</minute>
+               <second>59</second>
+               <year>2100</year>
+               <month>12</month>
+               <day>31</day>
+              </datetime>
+             </property>
+             <property name="minimumDateTime">
+              <datetime>
+               <hour>0</hour>
+               <minute>0</minute>
+               <second>0</second>
+               <year>1950</year>
+               <month>1</month>
+               <day>1</day>
+              </datetime>
+             </property>
+             <property name="displayFormat">
+              <string>dd.MM.yyyy</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_15">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_37">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_ZagalnProbig">
+             <property name="text">
+              <string>Загальн.пробіг</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_ZagalnProbig">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <double>9999.989999999999782</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_45">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_ZapravkaZaGotivku">
+             <property name="text">
+              <string>Запр.готівкою</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_ZapravkaZaGotivku">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <double>9999.989999999999782</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_44">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_PlanNaZminu">
+             <property name="text">
+              <string>План</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_PlanNaZminu">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <double>9999.989999999999782</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_38">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_LORONumber">
+             <property name="toolTip">
+              <string>№ Листка обліку розрахункових операцій</string>
+             </property>
+             <property name="text">
+              <string>№ЛОРО</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_LORONumber">
+             <property name="minimumSize">
+              <size>
+               <width>70</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>№ Листка обліку розрахункових операцій</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>999999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_32">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_KilkistProdanyhKvytkiv">
+             <property name="text">
+              <string>      К-сть квит.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_KilkistProdanyhKvytkiv">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_34">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_SumaProdanyhKvytkiv">
+             <property name="text">
+              <string>     Сума квит.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_SumaProdanyhKvytkiv">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <double>9999.989999999999782</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_21">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_33">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_KilkistProdanyhKvytkivAS">
+             <property name="text">
+              <string>АС К-сть квит.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_KilkistProdanyhKvytkivAS">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_35">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_SumaProdanyhKvytkivAS">
+             <property name="text">
+              <string>АС Сума квит.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_SumaProdanyhKvytkivAS">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <double>9999.989999999999782</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_36">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_PilgoviPasajyry">
+             <property name="text">
+              <string>Пільгові пасажири</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_PilgoviPasajyry">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_11">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_31">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_ChasVNaryadi">
+             <property name="text">
+              <string>Час в наряді</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTimeEdit" name="timeEdit_ChasVNaryadi">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="displayFormat">
+              <string>H:mm</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_30">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_ChasVRezervi">
+             <property name="text">
+              <string>Час в резерві/замовл.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTimeEdit" name="timeEdit_ChasVRezervi">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="displayFormat">
+              <string>H:mm</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_29">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_ChasVMarshruti">
+             <property name="text">
+              <string>Час в м-ті</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTimeEdit" name="timeEdit_ChasVMarshruti">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="displayFormat">
+              <string>H:mm</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_39">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_PlanKilkReisiv">
+             <property name="text">
+              <string>План.К-сть рейсів</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_PlanKilkReisiv">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_40">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_FactKilkReisiv">
+             <property name="text">
+              <string>Факт.К-сть рейсів</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="spinBox_FactKilkReisiv">
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="maximum">
+              <number>9999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_41">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_PlanRozhidPalnogo">
+             <property name="text">
+              <string>План.Розхід пальн.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_PlanRozhidPalnogo">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>10000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_42">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_FactRozhidPalnogo">
+             <property name="text">
+              <string>Факт.Розхід пальн.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_FactRozhidPalnogo">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <double>10000.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_UForm_ShlyahovyiLyst">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>2</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Таблиця &quot;Шляхові листи&quot;</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>2</number>
+       </property>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_ShlyahovyiLyst">
+         <property name="editTriggers">
+          <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pushButton_reload">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Поновити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images/UAutoParkImg.qrc">
+             <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_showHideExtSearch">
+           <property name="text">
+            <string>Розш.пошук</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_filterStr">
+           <property name="text">
+            <string>FilterStr</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="dateEdit_filtr">
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_create">
+           <property name="text">
+            <string>Створити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images/UAutoParkImg.qrc">
+             <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-add-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-add-032x032.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_delete">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="text">
+            <string>Видалити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../images/UAutoParkImg.qrc">
+             <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-remove-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-remove-032x032.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_extFilter">
+     <property name="title">
+      <string>Розширений фільтр</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>5</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_19">
+        <item>
+         <widget class="QGroupBox" name="groupBox_shyahLystNumberFilter">
+          <property name="title">
+           <string>№ шл. листа</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QSpinBox" name="spinBox_shyahLystNumberFilter">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>99999999</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_autoFilter">
+          <property name="title">
+           <string>Автобус</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QComboBox" name="comboBox_autoFilter">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_vodiyFilter">
+          <property name="title">
+           <string>Водій</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QComboBox" name="comboBox_vodiyFilter">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_9">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_20">
+        <item>
+         <widget class="QGroupBox" name="groupBox_marshrutFilter">
+          <property name="title">
+           <string>Маршрут</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QComboBox" name="comboBox_marshrutFilter">
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>0</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_dataVyizduFilter">
+          <property name="title">
+           <string>Дата виїзду</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QDateEdit" name="dateEdit_dataVyizduFilter">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_monthVyizduFilter">
+          <property name="title">
+           <string>Місяць виїзду</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QDateEdit" name="dateEdit_monthVyizduFilter">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="displayFormat">
+              <string>MM.yyyy</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_nochivlyaFilter">
+          <property name="title">
+           <string>Ночівля</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QComboBox" name="comboBox_nochivlyaFilter"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_korygFilter">
+          <property name="title">
+           <string>Коригув.</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QCheckBox" name="checkBox_korygFilter">
+             <property name="text">
+              <string>Так</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_execFilter">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Застосувати фільтр</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../images/UAutoParkImg.qrc">
+            <normaloff>:/function_icon_set/function_icon_set/search_48.png</normaloff>:/function_icon_set/function_icon_set/search_48.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_10">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+  <action name="action_printVidomistVykonannyaPlanuVDen">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відомість виконання плану</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк Відомості виконання плану та наявності пального за день</string>
+   </property>
+  </action>
+  <action name="action_printZvedenaVidomistPoDorojnihLystahZaMisyac">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Зведена відомість по вод. за міс.</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк Зведеної відомості по водіях за місяць</string>
+   </property>
+  </action>
+  <action name="action_printZvedenaVidomistPoTupahMarshrutivZaMisyac">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Зведена відомість по тип.марш. за міс.</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк Зведеної відомості по типах маршрутів за місяць</string>
+   </property>
+  </action>
+  <action name="action_printZvitProZdanuVyruchkuGotivkoyu">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Звіт про виручку гот.</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк Звіту про здану виручку готівкою водіями</string>
+   </property>
+  </action>
+  <action name="action_printZvitProPerevezPilgPasajyriv">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Звіт про перевез.пільг.пас.</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк Звіту про перевезення пільгових пасажирів</string>
+   </property>
+  </action>
+  <action name="action_printVidomistMarshrutivVDen">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відомість маршрутів за день</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк Відомості маршрутів за день</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>spinBox_ShlyahovyiLystNumber</tabstop>
+  <tabstop>comboBox_auto</tabstop>
+  <tabstop>comboBox_vodiy</tabstop>
+  <tabstop>comboBox_marshrut</tabstop>
+  <tabstop>spinBox_mtGrafNum</tabstop>
+  <tabstop>spinBox_mtZminaNum</tabstop>
+  <tabstop>checkBox_korekciya</tabstop>
+  <tabstop>toolButton_readDefaultMarshrutZnach</tabstop>
+  <tabstop>comboBox_nochivlya</tabstop>
+  <tabstop>dateTimeEdit_vyizdDate</tabstop>
+  <tabstop>dateTimeEdit_zaizdDate</tabstop>
+  <tabstop>dateTimeEdit_toZvitDate</tabstop>
+  <tabstop>doubleSpinBox_ZagalnProbig</tabstop>
+  <tabstop>doubleSpinBox_ZapravkaZaGotivku</tabstop>
+  <tabstop>doubleSpinBox_PlanNaZminu</tabstop>
+  <tabstop>spinBox_LORONumber</tabstop>
+  <tabstop>spinBox_KilkistProdanyhKvytkiv</tabstop>
+  <tabstop>doubleSpinBox_SumaProdanyhKvytkiv</tabstop>
+  <tabstop>spinBox_KilkistProdanyhKvytkivAS</tabstop>
+  <tabstop>doubleSpinBox_SumaProdanyhKvytkivAS</tabstop>
+  <tabstop>spinBox_PilgoviPasajyry</tabstop>
+  <tabstop>timeEdit_ChasVNaryadi</tabstop>
+  <tabstop>timeEdit_ChasVRezervi</tabstop>
+  <tabstop>timeEdit_ChasVMarshruti</tabstop>
+  <tabstop>spinBox_PlanKilkReisiv</tabstop>
+  <tabstop>spinBox_FactKilkReisiv</tabstop>
+  <tabstop>doubleSpinBox_PlanRozhidPalnogo</tabstop>
+  <tabstop>doubleSpinBox_FactRozhidPalnogo</tabstop>
+  <tabstop>tableWidget_ShlyahovyiLyst</tabstop>
+  <tabstop>pushButton_showHideExtSearch</tabstop>
+  <tabstop>dateEdit_filtr</tabstop>
+  <tabstop>pushButton_create</tabstop>
+  <tabstop>groupBox_extFilter</tabstop>
+  <tabstop>groupBox_shyahLystNumberFilter</tabstop>
+  <tabstop>spinBox_shyahLystNumberFilter</tabstop>
+  <tabstop>groupBox_autoFilter</tabstop>
+  <tabstop>comboBox_autoFilter</tabstop>
+  <tabstop>groupBox_vodiyFilter</tabstop>
+  <tabstop>comboBox_vodiyFilter</tabstop>
+  <tabstop>groupBox_marshrutFilter</tabstop>
+  <tabstop>comboBox_marshrutFilter</tabstop>
+  <tabstop>groupBox_dataVyizduFilter</tabstop>
+  <tabstop>dateEdit_dataVyizduFilter</tabstop>
+  <tabstop>groupBox_monthVyizduFilter</tabstop>
+  <tabstop>dateEdit_monthVyizduFilter</tabstop>
+  <tabstop>groupBox_nochivlyaFilter</tabstop>
+  <tabstop>comboBox_nochivlyaFilter</tabstop>
+  <tabstop>groupBox_korygFilter</tabstop>
+  <tabstop>checkBox_korygFilter</tabstop>
+  <tabstop>pushButton_execFilter</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../images/UAutoParkImg.qrc"/>
+ </resources>
+ <connections/>
+</ui>

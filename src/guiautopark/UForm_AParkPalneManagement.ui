@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UForm_AParkPalneManagement</class>
+ <widget class="QWidget" name="UForm_AParkPalneManagement">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>785</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Шляхові листи</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_8">
+   <property name="spacing">
+    <number>2</number>
+   </property>
+   <property name="leftMargin">
+    <number>2</number>
+   </property>
+   <property name="topMargin">
+    <number>4</number>
+   </property>
+   <property name="rightMargin">
+    <number>2</number>
+   </property>
+   <property name="bottomMargin">
+    <number>2</number>
+   </property>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <property name="spacing">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QGroupBox" name="groupBox_UForm_zvitKupivliPalnogo">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>2</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>1. Таблиця &quot;Звіти про використання коштів&quot; (на пальне)</string>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <property name="margin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QTableWidget" name="tableWidget_zvitKupivliPalnogo">
+          <property name="editTriggers">
+           <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="pushButton_reloadZvitKupivliPalnogo">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="text">
+             <string>Поновити</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/UAutoParkImg.qrc">
+              <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_createZvitKupivliPalnogo">
+            <property name="text">
+             <string>Створити</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/UAutoParkImg.qrc">
+              <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-add-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-add-032x032.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_deleteZvitKupivliPalnogo">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="text">
+             <string>Видалити</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/UAutoParkImg.qrc">
+              <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-remove-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-remove-032x032.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <item>
+        <widget class="QGroupBox" name="groupBox_zvitKupivliPalnogoFilter">
+         <property name="title">
+          <string>Розширений фільтр</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <property name="leftMargin">
+           <number>5</number>
+          </property>
+          <property name="topMargin">
+           <number>2</number>
+          </property>
+          <property name="rightMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
+           <number>2</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QGroupBox" name="groupBox_vodiyFilter">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="title">
+                 <string>Водій</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="margin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_vodiyFilter">
+                   <property name="minimumSize">
+                    <size>
+                     <width>235</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QGroupBox" name="groupBox_monthFilter">
+                <property name="title">
+                 <string>Місяць</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="margin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QDateEdit" name="dateEdit_monthFilter">
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                   <property name="displayFormat">
+                    <string>MM.yyyy</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_dateFilter">
+                <property name="title">
+                 <string>Дата</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="margin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QDateEdit" name="dateEdit_dateFilter">
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_palneFilter">
+                <property name="title">
+                 <string>Тип пального</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="margin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_typPalnogoFilter">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QGroupBox" name="groupBox_partnerId">
+                <property name="title">
+                 <string>Партнер</string>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_10">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="margin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_partnerIdFilter">
+                   <property name="minimumSize">
+                    <size>
+                     <width>150</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_zvitKupivliPalnogoFilter">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Застосувати
+фільтр</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images/UAutoParkImg.qrc">
+              <normaloff>:/function_icon_set/function_icon_set/search_48.png</normaloff>:/function_icon_set/function_icon_set/search_48.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_UForm_ZvitKupivliPalnogoOrders">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>2</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="title">
+          <string>1а. Таблиця платіжних документів, що відносяться до звіту</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <property name="margin">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QTableWidget" name="tableWidget_ZvitKupivliPalnogoOrders">
+            <property name="editTriggers">
+             <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_ordersSummary">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="pushButton_reloadZvitKupivliPalnogoOrders">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="text">
+               <string>Поновити</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../images/UAutoParkImg.qrc">
+                <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-reload-032x032.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_createZvitKupivliPalnogoOrders">
+              <property name="text">
+               <string>Створити</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../images/UAutoParkImg.qrc">
+                <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-add-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-add-032x032.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_deleteZvitKupivliPalnogoOrders">
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="text">
+               <string>Видалити</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../images/UAutoParkImg.qrc">
+                <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-remove-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-remove-032x032.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+  <action name="action_printZvitVykorystannyaKoshtivPalne">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк &quot;Звіту про викор. коштів&quot;</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк &quot;Звіту про використання коштів&quot; (облік пального)</string>
+   </property>
+  </action>
+  <action name="action_printReyestrChekivGAZ">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк &quot;Реєстр чеків&quot; (ГАЗ)</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк &quot;Реєстру чеків за придбаний стиснений природний газ&quot;</string>
+   </property>
+  </action>
+  <action name="action_printReyestrChekivPALNE">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк &quot;Реєстр чеків усіх постачальників&quot; (ПАЛЬНЕ)</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк &quot;Реєстру чеків за придбане пальне усіх постачальників&quot;</string>
+   </property>
+  </action>
+  <action name="action_printVidomistZakupivliPalnogoPoVodiyahZaMisyac">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк &quot;Відомості зак. пальн. за місяць&quot;</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк &quot;Відомості закупівлі пального по водіях за місяць&quot;</string>
+   </property>
+  </action>
+  <action name="action_printVidomistZakupivliPalnogoPoVodiyahZaMisyacVRozriziRahunkiv">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк &quot;Відомості закуп. пальн. за місяць в розрізі рах.&quot;</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк &quot;Відомості закупівлі пального по водіях за місяць в розрізі рахунків&quot;</string>
+   </property>
+  </action>
+  <action name="action_printReyestrChekivDailyGAZ">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк &quot;Реєстр чеків по днях&quot; (ГАЗ)</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк &quot;Реєстру чеків за придбаний стиснений природний газ по днях&quot;</string>
+   </property>
+  </action>
+  <action name="action_exportInformaciiVExcel">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/table_green_48.png</normaloff>:/function_icon_set/function_icon_set/table_green_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Експорт в формат &quot;Excel&quot;</string>
+   </property>
+   <property name="toolTip">
+    <string>Експорт чеків закправок ОККО в Excel</string>
+   </property>
+  </action>
+  <action name="action_printReyestrChekivVidPostachalnykaPALNE">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк &quot;Реєстр чеків від постачальника&quot; (ПАЛЬНЕ)</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк &quot;Реєстру чеків за придбане пальне від постачальника&quot;</string>
+   </property>
+  </action>
+  <action name="action_printReyestrChekivVidPostachalnykaPoVyduPalnogo">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк &quot;Реєстр чеків від постачальника по виду пального&quot;</string>
+   </property>
+   <property name="toolTip">
+    <string>Друк &quot;Реєстру чеків за придбане пальне від постачальника по виду пального&quot;</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>tableWidget_zvitKupivliPalnogo</tabstop>
+  <tabstop>pushButton_createZvitKupivliPalnogo</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../images/UAutoParkImg.qrc"/>
+ </resources>
+ <connections/>
+</ui>

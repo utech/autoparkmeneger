@@ -1,0 +1,7 @@
+CREATE TABLE `agentski` (
+  `id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `TabelNum_id` INTEGER UNSIGNED,
+  `Suma` DOUBLE(10,2),
+  PRIMARY KEY (`id`, `TabelNum_id`)
+)
+ENGINE = MyISAM;

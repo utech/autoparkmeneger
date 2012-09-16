@@ -1,0 +1,1 @@
+ALTER TABLE `marshruty` ADD COLUMN `VytrPalnNaBezdor` DOUBLE(4,1) DEFAULT '0.00' AFTER `ProbigZagalnyi`;

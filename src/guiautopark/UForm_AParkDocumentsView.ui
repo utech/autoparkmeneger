@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UForm_AParkDocumentsView</class>
+ <widget class="QWidget" name="UForm_AParkDocumentsView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>681</width>
+    <height>637</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Перегляд документації</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="margin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>661</width>
+        <height>681</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_dateFilter">
+             <property name="text">
+              <string>Поточна дата</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateEdit" name="dateEdit_filtr">
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_dyspetcherska">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="title">
+            <string>Інформація про показники перевезення</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <widget class="QLabel" name="label_dyspetcherskaImg">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>150</width>
+                  <height>150</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="pixmap">
+                 <pixmap resource="../images/UAutoParkImg.qrc">:/Splash/big/bus-256x256.png</pixmap>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_3">
+                <item>
+                 <widget class="QPushButton" name="pushButton_printPlanyValovyhDohodiv">
+                  <property name="text">
+                   <string>План валових доходів</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../images/UAutoParkImg.qrc">
+                    <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>16</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_printVidomistVykonannyaPlanuVDen">
+                  <property name="text">
+                   <string>Відомість виконання плану в день</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../images/UAutoParkImg.qrc">
+                    <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>16</width>
+                    <height>16</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_printZvedenaVidomistPoDorojnihLystahZaMisyac">
+                  <property name="text">
+                   <string>Зведена відомість по дорожніх листах за місяць</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../images/UAutoParkImg.qrc">
+                    <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_printZvedenaVidomistPoTupahMarshrutivZaMisyac">
+                  <property name="text">
+                   <string>Зведена відомість по типах маршрутів за місяць</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../images/UAutoParkImg.qrc">
+                    <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_printZvitProZdanuVyruchkuGotivkoyu">
+                  <property name="text">
+                   <string>Звіт про здану виручку готівкою</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../images/UAutoParkImg.qrc">
+                    <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_printZvitProPerevezPilgPasajyriv">
+                  <property name="text">
+                   <string>Звіт про перевезення пільгових пасажирів за місяць</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../images/UAutoParkImg.qrc">
+                    <normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</normaloff>:/function_icon_set/function_icon_set/paper_content_chart_48.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_printTabelVodoyiv">
+                  <property name="text">
+                   <string>Друк табеля водіїв</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../images/UAutoParkImg.qrc">
+                    <normaloff>:/function_icon_set/function_icon_set/table_green_48.png</normaloff>:/function_icon_set/function_icon_set/table_green_48.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_zarplata">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="title">
+            <string>Зарплата</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <item>
+                 <widget class="QLabel" name="label_zarplataImg">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="baseSize">
+                   <size>
+                    <width>100</width>
+                    <height>100</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="../images/UAutoParkImg.qrc">:/function_icon_set/function_icon_set/users_two_48.png</pixmap>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QPushButton" name="pushButton_print_perelik_pracivnykiv">
+                  <property name="text">
+                   <string>Друк переліку працівників</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_print_vidomist_narah_zarplaty">
+                  <property name="text">
+                   <string>Відомість нарахування зарплати</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_print_month_cards">
+                  <property name="text">
+                   <string>Місячні картки по зарплаті для працівників</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_print_year_cards">
+                  <property name="text">
+                   <string>Річні картки по зарплаті для працівників</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_print_utrymannya">
+                  <property name="text">
+                   <string>Утримання із зарплати</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_print_vidrahuvannya">
+                  <property name="text">
+                   <string>Відрахування (нарахування на зарплату)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_printOplataZaborgovanist">
+                  <property name="text">
+                   <string>Друк оплати та заборгованості</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_printVidomistNarahuvannyaIVidrahuvannya">
+                  <property name="text">
+                   <string>Відомість нарахування, утримання та відрахування по рахунках</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>Поточний працівник</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_nprId">
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QPushButton" name="pushButton_print_month_card_for_current_worker">
+                  <property name="text">
+                   <string>Місячна картка по зарплаті для поточного працівника</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_print_year_card_for_current_worker">
+                  <property name="text">
+                   <string>Річна картка по зарплаті для поточного працівника</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>157</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>dateEdit_filtr</tabstop>
+  <tabstop>pushButton_printPlanyValovyhDohodiv</tabstop>
+  <tabstop>pushButton_printVidomistVykonannyaPlanuVDen</tabstop>
+  <tabstop>pushButton_printZvedenaVidomistPoDorojnihLystahZaMisyac</tabstop>
+  <tabstop>pushButton_printZvedenaVidomistPoTupahMarshrutivZaMisyac</tabstop>
+  <tabstop>pushButton_printZvitProZdanuVyruchkuGotivkoyu</tabstop>
+  <tabstop>pushButton_printZvitProPerevezPilgPasajyriv</tabstop>
+  <tabstop>pushButton_printTabelVodoyiv</tabstop>
+  <tabstop>pushButton_print_perelik_pracivnykiv</tabstop>
+  <tabstop>pushButton_print_vidomist_narah_zarplaty</tabstop>
+  <tabstop>pushButton_print_month_cards</tabstop>
+  <tabstop>pushButton_print_year_cards</tabstop>
+  <tabstop>pushButton_print_utrymannya</tabstop>
+  <tabstop>pushButton_print_vidrahuvannya</tabstop>
+  <tabstop>pushButton_printOplataZaborgovanist</tabstop>
+  <tabstop>pushButton_printVidomistNarahuvannyaIVidrahuvannya</tabstop>
+  <tabstop>comboBox_nprId</tabstop>
+  <tabstop>pushButton_print_month_card_for_current_worker</tabstop>
+  <tabstop>pushButton_print_year_card_for_current_worker</tabstop>
+  <tabstop>scrollArea</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../images/UAutoParkImg.qrc"/>
+  <include location="../images/UAutoParkImg.qrc"/>
+ </resources>
+ <connections/>
+</ui>

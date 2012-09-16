@@ -1,0 +1,1 @@
+SELECT sum(`ZapravkaZaGotivku`) FROM `shlyahovyilyst` WHERE year(ToZvitDate)=2010 and month(ToZvitDate)=4

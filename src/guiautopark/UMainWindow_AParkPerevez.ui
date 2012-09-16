@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UMainWindow_AParkPerevez</class>
+ <widget class="QMainWindow" name="UMainWindow_AParkPerevez">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>967</width>
+    <height>603</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Пасажирські перевезення</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QTabWidget" name="tabWidget_parts">
+      <property name="tabPosition">
+       <enum>QTabWidget::North</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="elideMode">
+       <enum>Qt::ElideNone</enum>
+      </property>
+      <property name="usesScrollButtons">
+       <bool>false</bool>
+      </property>
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>true</bool>
+      </property>
+      <property name="movable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="tab_AParkPerevez_1">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>967</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Програма</string>
+    </property>
+    <addaction name="action_debugMessages"/>
+    <addaction name="separator"/>
+    <addaction name="action_close"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Інфо</string>
+    </property>
+    <addaction name="action_aboutProgram"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>Налаштування</string>
+    </property>
+    <addaction name="action_firmInfo"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QDockWidget" name="dockWidget_zmist">
+   <property name="windowIcon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/Program/small/bus-32x32.png</normaloff>:/Program/small/bus-32x32.png</iconset>
+   </property>
+   <property name="features">
+    <set>QDockWidget::NoDockWidgetFeatures</set>
+   </property>
+   <property name="windowTitle">
+    <string>Підрозділи</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTreeWidget" name="treeWidget_zmist">
+       <column>
+        <property name="text">
+         <string notr="true">1</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar_main">
+   <property name="windowTitle">
+    <string>Головний пенал</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_debugMessages"/>
+   <addaction name="action_close"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_dockWidgets">
+   <property name="windowTitle">
+    <string>Пенал меню підрозділів</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="action_close">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-cancel-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-cancel-032x032.png</iconset>
+   </property>
+   <property name="text">
+    <string>Вихід</string>
+   </property>
+  </action>
+  <action name="action_debugMessages">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-config-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-config-032x032.png</iconset>
+   </property>
+   <property name="text">
+    <string>Програмні повідомлення</string>
+   </property>
+  </action>
+  <action name="action_aboutProgram">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-info-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-info-032x032.png</iconset>
+   </property>
+   <property name="text">
+    <string>Про програму</string>
+   </property>
+  </action>
+  <action name="action_dovidnykRuhomyiSklad">
+   <property name="text">
+    <string>Рухомий склад</string>
+   </property>
+  </action>
+  <action name="action_firmInfo">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-bullet-032x032.png</normaloff>:/icontexto_webdev_pack/icontexto_webdev_pack/icontexto-webdev-bullet-032x032.png</iconset>
+   </property>
+   <property name="text">
+    <string>Реквізити підприємства</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../images/UAutoParkImg.qrc"/>
+ </resources>
+ <connections/>
+</ui>

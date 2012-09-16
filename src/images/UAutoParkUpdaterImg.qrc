@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="Splash">
+    <file>big/splash_256x256.png</file>
+  </qresource>
+  <qresource prefix="Program">
+    <file>small/bus-32x32.png</file>
+  </qresource>
+  <qresource prefix="function_icon_set">
+    <file>function_icon_set/cross_48.png</file>
+    <file>function_icon_set/refresh_48.png</file>
+  </qresource>
+</RCC>
