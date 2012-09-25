@@ -88,7 +88,8 @@ void UPrintDocs_APark::print_monthTabel(short year, short month, int pidrozdilId
 	cursor.insertBlock(blockFormat);
 	cursor.insertText("Цех, ділянка, підрозділ  ", textCharFormat);
 	if (pidrozdilId == 0){
-		cursor.insertText("Автопарк", textCharFormat_bold);}
+		cursor.insertText("Автопарк", textCharFormat_bold);
+	}
 	else if (pidrozdilId == -1) {
 		cursor.insertText("Водії", textCharFormat_bold);
 	}
