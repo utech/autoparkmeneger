@@ -87,7 +87,9 @@ void UPrintDocs_APark::print_monthTabel(short year, short month, int pidrozdilId
 	cursor.insertText(OrganizName(), textCharFormat_bold);
 	cursor.insertBlock(blockFormat);
 	cursor.insertText("Цех, ділянка, підрозділ  ", textCharFormat);
-	if (pidrozdilId == -1) {
+	if (pidrozdilId == 0)
+		cursor.insertText("Автопарк", textCharFormat_bold);
+	else if (pidrozdilId == -1) {
 		cursor.insertText("Водії", textCharFormat_bold);
 	}
 	else {
@@ -407,14 +409,13 @@ void UPrintDocs_APark::print_monthTabel(short year, short month, int pidrozdilId
 	tableCell.insertText("\nВ  - Відпустрка", textCharFormat);
 	tableCell.insertText("\nНА - За свій рахунок", textCharFormat);
 	tableCell.insertText("\nРВ - Вихідні і святкові дні", textCharFormat);
-	tableCell.set(1,1,"ІН - Невиходи дозволені Законом (державні обов'язки)", textCharFormat);
+	tableCell.set(1,1,"ІН -Невиходи дозволені Законом(державні обов'язки)", textCharFormat);
 	tableCell.insertText("\nВД - Службові відрядження", textCharFormat);
 	tableCell.insertText("\nВП - Відпустка у зв'язку з родами", textCharFormat);
 	tableCell.insertText("\nРС - Пільгові години матерям", textCharFormat);
 	tableCell.insertText("\nНУ - Понаднормовані години роботи", textCharFormat);
 	tableCell.insertText("\nП  - Цілозмінні простої", textCharFormat);
 	tableCell.set(1,2,"ПР - Прогули", textCharFormat);
-	tableCell.insertText("\nПР - Прогули", textCharFormat);
 	tableCell.insertText("\nІВ - Спізнення", textCharFormat);
 	tableCell.insertText("\nВЧ - Вечірні години роботи", textCharFormat);
 	tableCell.insertText("\nА  - Невихід з дозволу адміністрації", textCharFormat);
