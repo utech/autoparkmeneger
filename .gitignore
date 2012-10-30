@@ -3,8 +3,8 @@ bin/autopark.bin
 bin/updater.exe
 bin/updater.bin
 bin/autopark.ini
+src/autopark.pro.user*
 src/Makefile
-src/autopark.pro.user
 src/object_script.autopark
 src/updater/Makefile
 tmp/
