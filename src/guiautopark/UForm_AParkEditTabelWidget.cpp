@@ -85,7 +85,8 @@ void UForm_AParkEditTabelWidget::populateTabel()
 	query.next();
 	int rowCount = query.value(0).toInt(), row;
 	ui.tableWidget_tabel->setRowCount(rowCount);
-	query.exec("SELECT id, Prizv, Imia, Pobatk FROM npr WHERE Posada_id=10 \
+	query.exec("SELECT id, Prizv, Imia, Pobatk FROM npr	\
+				WHERE Posada_id=10 \
 				ORDER BY Naparnyky, Prizv, Imia, Pobatk");
 	for (row=0; row<rowCount && query.next(); row++){
 		str = query.value(1).toString();

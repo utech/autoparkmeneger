@@ -1149,11 +1149,15 @@ void UPrintDocs_APark::print_zvedenaVidomistPoDorojnihLystahZaMisyac(QDate vDate
 	printform->show();
 }
 //--------------------utech--------------------utech--------------------utech--------------------
-void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDate)
+void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDate, short marshrutType)
 {
 	printform = new UPrintForm(0, "Зведена відомість по дорожніх листах за місяць");
 	
 	QSqlQuery query;
+	
+	UPostupForm *postup = new UPostupForm(0, query.value(0).toInt());
+	postup->show();
+	
 	int columnCount=19;
 	UWorkMonth wMonth(vDate.year(), vDate.month());
 	
@@ -1175,7 +1179,17 @@ void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDat
 	textCharFormat_small.setFontPointSize( 5 );
 	cursor.insertText("ЗВЕДЕНА ВІДОМІСТЬ\n по дорожніх листах підприємства \n за період з "+wMonth.begDate().toString("dd.MM.yyyy")+" до "+wMonth.endDate().toString("dd.MM.yyyy")+"р.", textCharFormat_bold);
 	blockFormat.setAlignment( Qt::AlignLeft );
+	cursor.insertBlock(blockFormat);
 	textCharFormat_bold.setFontPointSize( 10 );
+	cursor.insertText("Тип маршруту: ", textCharFormat_bold);
+	if (marshrutType != 0){
+		query.exec("SELECT TypNameMnoj FROM typMarshrutu WHERE id="+QString::number(marshrutType));
+		query.seek(0);
+		cursor.insertText(query.value(0).toString()+".", textCharFormat_bold);
+	}
+	else{
+		cursor.insertText("УСІ.", textCharFormat_bold);
+	}
 	cursor.insertBlock(blockFormat);
 	cursor.insertText(" ", textCharFormat_small);
 	cursor.insertBlock(blockFormat);
@@ -1262,133 +1276,273 @@ void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDat
 			palneFactAll=0;
 	int wCounter = 0;
 	
-	QSqlQuery brygQuery;
-	brygQuery.exec("SELECT id, TypNameMnoj FROM typMarshrutu ORDER BY id");
-	while (brygQuery.next()){
-		++wCounter;
+	if (marshrutType == 0) {
+		QSqlQuery brygQuery;
+		brygQuery.exec("SELECT id, TypNameMnoj FROM typMarshrutu ORDER BY id");
+		while (brygQuery.next()){
+			++wCounter;
 		
-		query.exec("SELECT '', '', '', '', sum(DATEDIFF(date(s.DataZaizdu), date(s.DataVyizdu))+1) AS dniVRob, \
-						sum(time_to_sec(if (s.ChasVNaryadi IS NULL, 0,s.ChasVNaryadi )) \
-												+ time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godNaLiniyi, \
-						sum(time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godPoGraf, \
-						sum(s.ZagalnProbig) AS probigZagaln, \
-						sum(s.ZagalnProbig-s.NulyovyiProbig) AS plantyiProbig, sum(s.KilkProdKvytkiv+s.KilkProdKvytkivAutoStat) AS pasajyry, \
-						sum(s.curDniVRozyizdi) AS dniVRozizdi, sum(s.PlanNaZminu) AS vyruchkaPlanova, '', \
-						sum(s.PilgoviPasajyry) AS pilgPasajyry, sum(s.PlanRozhidPalnogo) AS rozhidPalnogoPoNormi, \
-						sum(s.FactRozhidPalnogo) AS rozhidPalnogoFact, sum(s.VartProdKvytkiv) AS vyruchkaFact, sum(s.VartProdKvytkivAutoStat) AS vyruchkaFactAS \
-					FROM \
-						(SELECT shlyahovyiLyst.*, marshruty.TypMarshrutu_id, if(shlyahovyiLyst.TypPoNochivli_id=2,1,0) AS curDniVRozyizdi FROM shlyahovyiLyst \
-						LEFT JOIN marshruty ON shlyahovyiLyst.KodMarshrutu_id = marshruty.KodMarshrutu \
-							and shlyahovyiLyst.GrafikNum = marshruty.GrafikNum \
-							and shlyahovyiLyst.ZminaNum = marshruty.ZminaNum \
-						WHERE marshruty.TypMarshrutu_id="+brygQuery.value(0).toString()+" and \
-							date(ToZvitDate) BETWEEN date('"+wMonth.begDate().toString("yyyy-MM-dd")+"') \
-								AND date('"+wMonth.endDate().toString("yyyy-MM-dd")+"')) AS s");
+				query.exec("SELECT '', '', '', '', sum(DATEDIFF(date(s.DataZaizdu), date(s.DataVyizdu))+1) AS dniVRob, \
+								sum(time_to_sec(if (s.ChasVNaryadi IS NULL, 0,s.ChasVNaryadi )) \
+														+ time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godNaLiniyi, \
+								sum(time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godPoGraf, \
+								sum(s.ZagalnProbig) AS probigZagaln, \
+								sum(s.ZagalnProbig-s.NulyovyiProbig) AS plantyiProbig, sum(s.KilkProdKvytkiv+s.KilkProdKvytkivAutoStat) AS pasajyry, \
+								sum(s.curDniVRozyizdi) AS dniVRozizdi, sum(s.PlanNaZminu) AS vyruchkaPlanova, '', \
+								sum(s.PilgoviPasajyry) AS pilgPasajyry, sum(s.PlanRozhidPalnogo) AS rozhidPalnogoPoNormi, \
+								sum(s.FactRozhidPalnogo) AS rozhidPalnogoFact, sum(s.VartProdKvytkiv) AS vyruchkaFact, sum(s.VartProdKvytkivAutoStat) AS vyruchkaFactAS \
+							FROM \
+								(SELECT shlyahovyiLyst.*, marshruty.TypMarshrutu_id, if(shlyahovyiLyst.TypPoNochivli_id=2,1,0) AS curDniVRozyizdi FROM shlyahovyiLyst \
+								LEFT JOIN marshruty ON shlyahovyiLyst.KodMarshrutu_id = marshruty.KodMarshrutu \
+									and shlyahovyiLyst.GrafikNum = marshruty.GrafikNum \
+									and shlyahovyiLyst.ZminaNum = marshruty.ZminaNum \
+								WHERE marshruty.TypMarshrutu_id="+brygQuery.value(0).toString()+" and \
+									date(ToZvitDate) BETWEEN date('"+wMonth.begDate().toString("yyyy-MM-dd")+"') \
+										AND date('"+wMonth.endDate().toString("yyyy-MM-dd")+"')) AS s");
 		
-		int iVal;
-		double dVal;
+			int iVal;
+			double dVal;
 		
-		while (query.next()){
-			++row;
-			table->insertRows(row, 1);
-			QSqlRecord rec = query.record();
+			while (query.next()){
+				++row;
+				table->insertRows(row, 1);
+				QSqlRecord rec = query.record();
+			
+				QString str;
+				tableCell.setAlignment(Qt::AlignCenter);
+				tableCell.set(row,0,wCounter, textCharFormat);
+				tableCell.setAlignment(Qt::AlignRight);
+				tableCell.setDash(row,1,brygQuery.value(0).toInt(), textCharFormat);
+				tableCell.setAlignment(Qt::AlignLeft);
+				tableCell.set(row,2,brygQuery.value(1).toString(), textCharFormat);
+				tableCell.setAlignment(Qt::AlignRight);
+				iVal = query.value(4).toInt();
+				dniVRobotiAll += iVal;
+				tableCell.setDash(row,3,iVal, textCharFormat);
+				iVal = query.value(5).toInt()/60;
+				godNaLiniyiAll += iVal;
+				tableCell.set(row,4,secToTime(iVal), textCharFormat);
+				iVal = query.value(6).toInt()/60;
+				godPoGrafikuAll += iVal;
+				tableCell.set(row,5,secToTime(iVal), textCharFormat);
+				dVal = query.value(7).toDouble();
+				probigZagAll += dVal;
+				tableCell.setDash(row,6,dVal, textCharFormat);
+				dVal = query.value(8).toDouble();
+				probigPlatnAll += dVal;
+				tableCell.setDash(row,7,dVal, textCharFormat);
+				iVal = query.value(9).toInt();
+				pasajyryAll += iVal;
+				tableCell.setDash(row,8,iVal, textCharFormat);
+				iVal = query.value(13).toInt();
+				pilgovykyCountAll += iVal;
+				tableCell.setDash(row,9,iVal, textCharFormat);
+				iVal = query.value(10).toInt();
+				dniVRozAll += iVal;
+				tableCell.setDash(row,10,iVal, textCharFormat);
+				dVal = query.value(11).toDouble();
+				vyruchkaPlanAll += dVal;
+				tableCell.setDash(row,11,dVal, textCharFormat);
+				dVal = query.value(16).toDouble() + query.value(17).toDouble();
+				vyruchkaFactAll += dVal;
+				tableCell.setDash(row,12,dVal, textCharFormat);
+			
+				dVal = query.value(16).toDouble();
+				vyruchkaVodAll += dVal;
+				tableCell.setDash(row,13,dVal, textCharFormat);
+				dVal = query.value(17).toDouble();
+				vyruchkaASAll += dVal;
+				tableCell.setDash(row,14,dVal, textCharFormat);
+			
+				tableCell.setDash(row,15,query.value(16).toDouble() + query.value(17).toDouble() - query.value(11).toDouble(), textCharFormat);
+				if (query.value(11).toDouble() != 0)
+					tableCell.setDash(row,16,qRound((query.value(16).toDouble() + query.value(17).toDouble())*10000/query.value(11).toDouble())/100.0, textCharFormat);
+				else
+					tableCell.set(row,16,"-", textCharFormat);
+				dVal = query.value(14).toDouble();
+				palnePoNormiAll += dVal;
+				tableCell.setDash(row,17,dVal, textCharFormat);
+				dVal = query.value(15).toDouble();
+				palneFactAll += dVal;
+				tableCell.setDash(row,18,dVal, textCharFormat);
+			}
+		}
+		++row;
+	
+		table->mergeCells(row,0,1,3);
+		tableCell.setAlignment(Qt::AlignLeft);
+		tableCell.set(row,0,"  Всього по підприємству", textCharFormat_bold);
+		
+		tableCell.setAlignment(Qt::AlignRight);
+		tableCell.setDash(row,3,dniVRobotiAll, textCharFormat_bold);
+		tableCell.set(row,4,secToTime(godNaLiniyiAll), textCharFormat_bold);
+		tableCell.set(row,5,secToTime(godPoGrafikuAll), textCharFormat_bold);
+		tableCell.setDash(row,6,probigZagAll, textCharFormat_bold);
+		tableCell.setDash(row,7,probigPlatnAll, textCharFormat_bold);
+		tableCell.setDash(row,8,pasajyryAll, textCharFormat_bold);
+		tableCell.setDash(row,9,pilgovykyCountAll, textCharFormat_bold);
+		tableCell.setDash(row,10,dniVRozAll, textCharFormat_bold);
+		tableCell.setDash(row,11,vyruchkaPlanAll, textCharFormat_bold);
+		tableCell.setDash(row,12,vyruchkaFactAll, textCharFormat_bold);
+	
+		tableCell.setDash(row,13,vyruchkaVodAll, textCharFormat_bold);
+		tableCell.setDash(row,14,vyruchkaASAll, textCharFormat_bold);
+	
+		tableCell.setDash(row,15,vyruchkaFactAll-vyruchkaPlanAll, textCharFormat_bold);
+		if (vyruchkaPlanAll != 0) 
+			tableCell.setDash(row,16,qRound(vyruchkaFactAll*10000/vyruchkaPlanAll)/100.0, textCharFormat_bold);
+		else 
+			tableCell.set(row,16,"-", textCharFormat_bold);
+			tableCell.setDash(row,17,palnePoNormiAll, textCharFormat_bold);
+			tableCell.setDash(row,18,palneFactAll, textCharFormat_bold);
+	
+			cursor.movePosition(QTextCursor::End);
+			cursor.insertFragment(pidpysy(6, textCharFormat, QPrinter::Landscape));
+	}
+	else { 
+		QSqlQuery brygQuery;
+		brygQuery.exec("SELECT id, TypNameMnoj FROM typMarshrutu WHERE id = "+QString::number(marshrutType)+" ");
+		while (brygQuery.next()){
+			++wCounter;
+		
+				query.exec("SELECT '', '', n.KodMarshrutu, n.MarshrutNapryamok, \
+									sum(DATEDIFF(date(s.DataZaizdu), date(s.DataVyizdu))+1) AS dniVRob,\
+									sum(time_to_sec(if (s.ChasVNaryadi IS NULL, 0,s.ChasVNaryadi ))\
+										+ time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godNaLiniyi,\
+									sum(time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godPoGraf,\
+									sum(s.ZagalnProbig) AS probigZagaln,\
+									sum(s.ZagalnProbig-s.NulyovyiProbig) AS plantyiProbig, sum(s.KilkProdKvytkiv+s.KilkProdKvytkivAutoStat) AS pasajyry,\
+									sum(s.curDniVRozyizdi) AS dniVRozizdi, sum(s.PlanNaZminu) AS vyruchkaPlanova, '',\
+									sum(s.PilgoviPasajyry) AS pilgPasajyry, sum(s.PlanRozhidPalnogo) AS rozhidPalnogoPoNormi,\
+									sum(s.FactRozhidPalnogo) AS rozhidPalnogoFact, sum(s.VartProdKvytkiv) AS vyruchkaFact,\
+									sum(s.VartProdKvytkivAutoStat) AS vyruchkaFactAS, sum(s.ZapravkaZaGotivku) AS ZaprGotivkou\
+							FROM\
+								(SELECT * FROM marshruty WHERE TypMarshrutu_Id="+QString::number(marshrutType)+") AS n\
+								LEFT JOIN (SELECT shlyahovyiLyst.*, marshruty.TypMarshrutu_id, if(shlyahovyiLyst.TypPoNochivli_id=2,1,0) AS curDniVRozyizdi FROM shlyahovyiLyst\
+								LEFT JOIN marshruty ON shlyahovyiLyst.KodMarshrutu_id = marshruty.KodMarshrutu\
+								and shlyahovyiLyst.GrafikNum = marshruty.GrafikNum\
+								and shlyahovyiLyst.ZminaNum = marshruty.ZminaNum\
+							WHERE\
+								marshruty.TypMarshrutu_id="+QString::number(marshrutType)+" and\
+								date(ToZvitDate) BETWEEN date('"+wMonth.begDate().toString("yyyy-MM-dd")+"') \
+								AND date('"+wMonth.endDate().toString("yyyy-MM-dd")+"')) AS s\
+								ON n.KodMarshrutu=s.KodMarshrutu_id\
+								and s.GrafikNum = n.GrafikNum\
+								and s.ZminaNum = n.ZminaNum\
+								GROUP BY n.KodMarshrutu \
+								ORDER BY n.KodMarshrutu");
+		
+			int iVal;
+			double dVal;
+		
+			while (query.next()){
+				++row;
+				table->insertRows(row, 1);
+				QSqlRecord rec = query.record();
 			
 			QString str;
-			tableCell.setAlignment(Qt::AlignCenter);
-			tableCell.set(row,0,wCounter, textCharFormat);
-			tableCell.setAlignment(Qt::AlignRight);
-			tableCell.setDash(row,1,brygQuery.value(0).toInt(), textCharFormat);
-			tableCell.setAlignment(Qt::AlignLeft);
-			tableCell.set(row,2,brygQuery.value(1).toString(), textCharFormat);
-			tableCell.setAlignment(Qt::AlignRight);
-			iVal = query.value(4).toInt();
-			dniVRobotiAll += iVal;
-			tableCell.setDash(row,3,iVal, textCharFormat);
-			iVal = query.value(5).toInt()/60;
-			godNaLiniyiAll += iVal;
-			tableCell.set(row,4,secToTime(iVal), textCharFormat);
-			iVal = query.value(6).toInt()/60;
-			godPoGrafikuAll += iVal;
-			tableCell.set(row,5,secToTime(iVal), textCharFormat);
-			dVal = query.value(7).toDouble();
-			probigZagAll += dVal;
-			tableCell.setDash(row,6,dVal, textCharFormat);
-			dVal = query.value(8).toDouble();
-			probigPlatnAll += dVal;
-			tableCell.setDash(row,7,dVal, textCharFormat);
-			iVal = query.value(9).toInt();
-			pasajyryAll += iVal;
-			tableCell.setDash(row,8,iVal, textCharFormat);
-			iVal = query.value(13).toInt();
-			pilgovykyCountAll += iVal;
-			tableCell.setDash(row,9,iVal, textCharFormat);
-			iVal = query.value(10).toInt();
-			dniVRozAll += iVal;
-			tableCell.setDash(row,10,iVal, textCharFormat);
-			dVal = query.value(11).toDouble();
-			vyruchkaPlanAll += dVal;
-			tableCell.setDash(row,11,dVal, textCharFormat);
-			dVal = query.value(16).toDouble() + query.value(17).toDouble();
-			vyruchkaFactAll += dVal;
-			tableCell.setDash(row,12,dVal, textCharFormat);
+				tableCell.setAlignment(Qt::AlignCenter);
+				tableCell.set(row,0,wCounter++, textCharFormat);
+				tableCell.setAlignment(Qt::AlignRight);
+				tableCell.setDash(row,1,query.value(2).toInt(), textCharFormat);
+				tableCell.setAlignment(Qt::AlignLeft);
+				tableCell.set(row,2,query.value(3).toString(), textCharFormat);
+				tableCell.setAlignment(Qt::AlignRight);
+				iVal = query.value(4).toInt();
+				dniVRobotiAll += iVal;
+				tableCell.setDash(row,3,iVal, textCharFormat);
+				iVal = query.value(5).toInt()/60;
+				godNaLiniyiAll += iVal;
+				tableCell.set(row,4,secToTime(iVal), textCharFormat);
+				iVal = query.value(6).toInt()/60;
+				godPoGrafikuAll += iVal;
+				tableCell.set(row,5,secToTime(iVal), textCharFormat);
+				dVal = query.value(7).toDouble();
+				probigZagAll += dVal;
+				tableCell.setDash(row,6,dVal, textCharFormat);
+				dVal = query.value(8).toDouble();
+				probigPlatnAll += dVal;
+				tableCell.setDash(row,7,dVal, textCharFormat);
+				iVal = query.value(9).toInt();
+				pasajyryAll += iVal;
+				tableCell.setDash(row,8,iVal, textCharFormat);
+				iVal = query.value(13).toInt();
+				pilgovykyCountAll += iVal;
+				tableCell.setDash(row,9,iVal, textCharFormat);
+				iVal = query.value(10).toInt();
+				dniVRozAll += iVal;
+				tableCell.setDash(row,10,iVal, textCharFormat);
+				dVal = query.value(11).toDouble();
+				vyruchkaPlanAll += dVal;
+				tableCell.setDash(row,11,dVal, textCharFormat);
+				dVal = query.value(16).toDouble() + query.value(17).toDouble();
+				vyruchkaFactAll += dVal;
+				tableCell.setDash(row,12,dVal, textCharFormat);
 			
-			dVal = query.value(16).toDouble();
-			vyruchkaVodAll += dVal;
-			tableCell.setDash(row,13,dVal, textCharFormat);
-			dVal = query.value(17).toDouble();
-			vyruchkaASAll += dVal;
-			tableCell.setDash(row,14,dVal, textCharFormat);
+				dVal = query.value(16).toDouble();
+				vyruchkaVodAll += dVal;
+				tableCell.setDash(row,13,dVal, textCharFormat);
+				dVal = query.value(17).toDouble();
+				vyruchkaASAll += dVal;
+				tableCell.setDash(row,14,dVal, textCharFormat);
 			
-			tableCell.setDash(row,15,query.value(16).toDouble() + query.value(17).toDouble() - query.value(11).toDouble(), textCharFormat);
-			if (query.value(11).toDouble() != 0)
-				tableCell.setDash(row,16,qRound((query.value(16).toDouble() + query.value(17).toDouble())*10000/query.value(11).toDouble())/100.0, textCharFormat);
-			else
-				tableCell.set(row,16,"-", textCharFormat);
-			dVal = query.value(14).toDouble();
-			palnePoNormiAll += dVal;
-			tableCell.setDash(row,17,dVal, textCharFormat);
-			dVal = query.value(15).toDouble();
-			palneFactAll += dVal;
-			tableCell.setDash(row,18,dVal, textCharFormat);
+				tableCell.setDash(row,15,query.value(16).toDouble() + query.value(17).toDouble() - query.value(11).toDouble(), textCharFormat);
+				if (query.value(11).toDouble() != 0)
+					tableCell.setDash(row,16,qRound((query.value(16).toDouble() + query.value(17).toDouble())*10000/query.value(11).toDouble())/100.0, textCharFormat);
+				else
+					tableCell.set(row,16,"-", textCharFormat);
+				dVal = query.value(14).toDouble();
+				palnePoNormiAll += dVal;
+				tableCell.setDash(row,17,dVal, textCharFormat);
+				dVal = query.value(15).toDouble();
+				palneFactAll += dVal;
+				tableCell.setDash(row,18,dVal, textCharFormat);
+			}
 		}
+		++row;
+	
+		table->mergeCells(row,0,1,3);
+		tableCell.setAlignment(Qt::AlignLeft);
+		tableCell.set(row,0,"  Всього по маршруту", textCharFormat_bold);
+	
+		
+		tableCell.setAlignment(Qt::AlignRight);
+		tableCell.setDash(row,3,dniVRobotiAll, textCharFormat_bold);
+		tableCell.set(row,4,secToTime(godNaLiniyiAll), textCharFormat_bold);
+		tableCell.set(row,5,secToTime(godPoGrafikuAll), textCharFormat_bold);
+		tableCell.setDash(row,6,probigZagAll, textCharFormat_bold);
+		tableCell.setDash(row,7,probigPlatnAll, textCharFormat_bold);
+		tableCell.setDash(row,8,pasajyryAll, textCharFormat_bold);
+		tableCell.setDash(row,9,pilgovykyCountAll, textCharFormat_bold);
+		tableCell.setDash(row,10,dniVRozAll, textCharFormat_bold);
+		tableCell.setDash(row,11,vyruchkaPlanAll, textCharFormat_bold);
+		tableCell.setDash(row,12,vyruchkaFactAll, textCharFormat_bold);
+	
+		tableCell.setDash(row,13,vyruchkaVodAll, textCharFormat_bold);
+		tableCell.setDash(row,14,vyruchkaASAll, textCharFormat_bold);
+	
+		tableCell.setDash(row,15,vyruchkaFactAll-vyruchkaPlanAll, textCharFormat_bold);
+		if (vyruchkaPlanAll != 0) 
+			tableCell.setDash(row,16,qRound(vyruchkaFactAll*10000/vyruchkaPlanAll)/100.0, textCharFormat_bold);
+		else 
+			tableCell.set(row,16,"-", textCharFormat_bold);
+			tableCell.setDash(row,17,palnePoNormiAll, textCharFormat_bold);
+			tableCell.setDash(row,18,palneFactAll, textCharFormat_bold);
+	
+			cursor.movePosition(QTextCursor::End);
+			cursor.insertFragment(pidpysy(6, textCharFormat, QPrinter::Landscape));
+			
 	}
 	
-	++row;
+			printform->printer()->setOrientation(QPrinter::Landscape);
+			printform->printer()->setDocName("Зведена відомість по дорожніх листах за місяць");
+			printform->printer()->setPageMargins( 7, 10, 4, 20, QPrinter::Millimeter );
+			
+			delete postup;
+			
+			printform->show();
+		
 	
-	table->mergeCells(row,0,1,3);
-	tableCell.setAlignment(Qt::AlignLeft);
-	tableCell.set(row,0,"  Всього по підприємству", textCharFormat_bold);
-	
-	tableCell.setAlignment(Qt::AlignRight);
-	tableCell.setDash(row,3,dniVRobotiAll, textCharFormat_bold);
-	tableCell.set(row,4,secToTime(godNaLiniyiAll), textCharFormat_bold);
-	tableCell.set(row,5,secToTime(godPoGrafikuAll), textCharFormat_bold);
-	tableCell.setDash(row,6,probigZagAll, textCharFormat_bold);
-	tableCell.setDash(row,7,probigPlatnAll, textCharFormat_bold);
-	tableCell.setDash(row,8,pasajyryAll, textCharFormat_bold);
-	tableCell.setDash(row,9,pilgovykyCountAll, textCharFormat_bold);
-	tableCell.setDash(row,10,dniVRozAll, textCharFormat_bold);
-	tableCell.setDash(row,11,vyruchkaPlanAll, textCharFormat_bold);
-	tableCell.setDash(row,12,vyruchkaFactAll, textCharFormat_bold);
-	
-	tableCell.setDash(row,13,vyruchkaVodAll, textCharFormat_bold);
-	tableCell.setDash(row,14,vyruchkaASAll, textCharFormat_bold);
-	
-	tableCell.setDash(row,15,vyruchkaFactAll-vyruchkaPlanAll, textCharFormat_bold);
-	if (vyruchkaPlanAll != 0)
-		tableCell.setDash(row,16,qRound(vyruchkaFactAll*10000/vyruchkaPlanAll)/100.0, textCharFormat_bold);
-	else
-		tableCell.set(row,16,"-", textCharFormat_bold);
-	tableCell.setDash(row,17,palnePoNormiAll, textCharFormat_bold);
-	tableCell.setDash(row,18,palneFactAll, textCharFormat_bold);
-	
-	cursor.movePosition(QTextCursor::End);
-	cursor.insertFragment(pidpysy(6, textCharFormat, QPrinter::Landscape));
-	
-	printform->printer()->setOrientation(QPrinter::Landscape);
-	printform->printer()->setDocName("Зведена відомість по дорожніх листах за місяць");
-	printform->printer()->setPageMargins( 7, 10, 4, 20, QPrinter::Millimeter );
-	printform->show();
 }
 //--------------------utech--------------------utech--------------------utech--------------------
 void UPrintDocs_APark::print_zvitProZdanuVyruchkuGotivkoyuZaMisyac(QDate vDate)

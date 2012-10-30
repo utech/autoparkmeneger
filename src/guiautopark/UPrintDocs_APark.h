@@ -43,7 +43,7 @@ class UPrintDocs_APark
 		void print_perelikAvtobusivNaTO(short TONumber = 0);
 		void print_vidomistVykonannyaPlanuVDen(QDate vDate);
 		void print_zvedenaVidomistPoDorojnihLystahZaMisyac(QDate vDate, short marshrutType=0);
-		void print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDate);
+		void print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDate, short marshrutType=0);
 		void print_zvitProZdanuVyruchkuGotivkoyuZaMisyac(QDate vDate);
 		void print_KartkyOblikuVykonPlanu(QDate vDate, QList<int> vodiyiList);
 		void print_KartkyRobotyVodiyiv(QDate vDate, QList<int> vodiyiList);

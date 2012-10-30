@@ -532,10 +532,10 @@ void UForm_AParkShlyahovyiLyst::action_printZvedenaVidomistPoDorojnihLystahZaMis
 //--------------------utech--------------------utech--------------------utech--------------------
 void UForm_AParkShlyahovyiLyst::action_printZvedenaVidomistPoTupahMarshrutivZaMisyac_activated()
 {
-	UDialog_AParkDateFilter *d = new UDialog_AParkDateFilter(ui.dateEdit_filtr->date(), "Дата для відомості", "MM.yyyy");
+	UDialog_AParkMarshrutTypeDateFilter *d = new UDialog_AParkMarshrutTypeDateFilter(ui.dateEdit_filtr->date(), "Дата для відомості", "MM.yyyy");
 	if (d->exec()) {
 		UPrintDocs_APark *printDocs = new UPrintDocs_APark();
-		printDocs->print_zvedenaVidomistPoTupahMarshrutivZaMisyac(d->date());
+		printDocs->print_zvedenaVidomistPoTupahMarshrutivZaMisyac(d->date(), d->marshrutType());
 		connect(this, SIGNAL(mainWindowClosed()), printDocs->printform, SLOT(close()));
 		delete printDocs;
 	}
