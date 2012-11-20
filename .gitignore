@@ -8,3 +8,4 @@ src/Makefile
 src/object_script.autopark
 src/updater/Makefile
 tmp/
+install/installer.nsi

@@ -1155,9 +1155,6 @@ void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDat
 	
 	QSqlQuery query;
 	
-	UPostupForm *postup = new UPostupForm(0, query.value(0).toInt());
-	postup->show();
-	
 	int columnCount=19;
 	UWorkMonth wMonth(vDate.year(), vDate.month());
 	
@@ -1282,23 +1279,23 @@ void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDat
 		while (brygQuery.next()){
 			++wCounter;
 		
-				query.exec("SELECT '', '', '', '', sum(DATEDIFF(date(s.DataZaizdu), date(s.DataVyizdu))+1) AS dniVRob, \
-								sum(time_to_sec(if (s.ChasVNaryadi IS NULL, 0,s.ChasVNaryadi )) \
-														+ time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godNaLiniyi, \
-								sum(time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godPoGraf, \
-								sum(s.ZagalnProbig) AS probigZagaln, \
-								sum(s.ZagalnProbig-s.NulyovyiProbig) AS plantyiProbig, sum(s.KilkProdKvytkiv+s.KilkProdKvytkivAutoStat) AS pasajyry, \
-								sum(s.curDniVRozyizdi) AS dniVRozizdi, sum(s.PlanNaZminu) AS vyruchkaPlanova, '', \
-								sum(s.PilgoviPasajyry) AS pilgPasajyry, sum(s.PlanRozhidPalnogo) AS rozhidPalnogoPoNormi, \
-								sum(s.FactRozhidPalnogo) AS rozhidPalnogoFact, sum(s.VartProdKvytkiv) AS vyruchkaFact, sum(s.VartProdKvytkivAutoStat) AS vyruchkaFactAS \
-							FROM \
-								(SELECT shlyahovyiLyst.*, marshruty.TypMarshrutu_id, if(shlyahovyiLyst.TypPoNochivli_id=2,1,0) AS curDniVRozyizdi FROM shlyahovyiLyst \
-								LEFT JOIN marshruty ON shlyahovyiLyst.KodMarshrutu_id = marshruty.KodMarshrutu \
-									and shlyahovyiLyst.GrafikNum = marshruty.GrafikNum \
-									and shlyahovyiLyst.ZminaNum = marshruty.ZminaNum \
-								WHERE marshruty.TypMarshrutu_id="+brygQuery.value(0).toString()+" and \
-									date(ToZvitDate) BETWEEN date('"+wMonth.begDate().toString("yyyy-MM-dd")+"') \
-										AND date('"+wMonth.endDate().toString("yyyy-MM-dd")+"')) AS s");
+			query.exec("SELECT '', '', '', '', sum(DATEDIFF(date(s.DataZaizdu), date(s.DataVyizdu))+1) AS dniVRob, \
+							sum(time_to_sec(if (s.ChasVNaryadi IS NULL, 0,s.ChasVNaryadi )) \
+											+ time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godNaLiniyi, \
+							sum(time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godPoGraf, \
+							sum(s.ZagalnProbig) AS probigZagaln, \
+							sum(s.ZagalnProbig-s.NulyovyiProbig) AS plantyiProbig, sum(s.KilkProdKvytkiv+s.KilkProdKvytkivAutoStat) AS pasajyry, \
+							sum(s.curDniVRozyizdi) AS dniVRozizdi, sum(s.PlanNaZminu) AS vyruchkaPlanova, '', \
+							sum(s.PilgoviPasajyry) AS pilgPasajyry, sum(s.PlanRozhidPalnogo) AS rozhidPalnogoPoNormi, \
+							sum(s.FactRozhidPalnogo) AS rozhidPalnogoFact, sum(s.VartProdKvytkiv) AS vyruchkaFact, sum(s.VartProdKvytkivAutoStat) AS vyruchkaFactAS \
+						FROM \
+							(SELECT shlyahovyiLyst.*, marshruty.TypMarshrutu_id, if(shlyahovyiLyst.TypPoNochivli_id=2,1,0) AS curDniVRozyizdi FROM shlyahovyiLyst \
+							LEFT JOIN marshruty ON shlyahovyiLyst.KodMarshrutu_id = marshruty.KodMarshrutu \
+							and shlyahovyiLyst.GrafikNum = marshruty.GrafikNum \
+							and shlyahovyiLyst.ZminaNum = marshruty.ZminaNum \
+						WHERE marshruty.TypMarshrutu_id="+brygQuery.value(0).toString()+" and \
+							date(ToZvitDate) BETWEEN date('"+wMonth.begDate().toString("yyyy-MM-dd")+"') \
+							AND date('"+wMonth.endDate().toString("yyyy-MM-dd")+"')) AS s");
 		
 			int iVal;
 			double dVal;
@@ -1405,32 +1402,32 @@ void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDat
 		while (brygQuery.next()){
 			++wCounter;
 		
-				query.exec("SELECT '', '', n.KodMarshrutu, n.MarshrutNapryamok, \
-									sum(DATEDIFF(date(s.DataZaizdu), date(s.DataVyizdu))+1) AS dniVRob,\
-									sum(time_to_sec(if (s.ChasVNaryadi IS NULL, 0,s.ChasVNaryadi ))\
-										+ time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godNaLiniyi,\
-									sum(time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godPoGraf,\
-									sum(s.ZagalnProbig) AS probigZagaln,\
-									sum(s.ZagalnProbig-s.NulyovyiProbig) AS plantyiProbig, sum(s.KilkProdKvytkiv+s.KilkProdKvytkivAutoStat) AS pasajyry,\
-									sum(s.curDniVRozyizdi) AS dniVRozizdi, sum(s.PlanNaZminu) AS vyruchkaPlanova, '',\
-									sum(s.PilgoviPasajyry) AS pilgPasajyry, sum(s.PlanRozhidPalnogo) AS rozhidPalnogoPoNormi,\
-									sum(s.FactRozhidPalnogo) AS rozhidPalnogoFact, sum(s.VartProdKvytkiv) AS vyruchkaFact,\
-									sum(s.VartProdKvytkivAutoStat) AS vyruchkaFactAS, sum(s.ZapravkaZaGotivku) AS ZaprGotivkou\
-							FROM\
-								(SELECT * FROM marshruty WHERE TypMarshrutu_Id="+QString::number(marshrutType)+") AS n\
-								LEFT JOIN (SELECT shlyahovyiLyst.*, marshruty.TypMarshrutu_id, if(shlyahovyiLyst.TypPoNochivli_id=2,1,0) AS curDniVRozyizdi FROM shlyahovyiLyst\
-								LEFT JOIN marshruty ON shlyahovyiLyst.KodMarshrutu_id = marshruty.KodMarshrutu\
-								and shlyahovyiLyst.GrafikNum = marshruty.GrafikNum\
-								and shlyahovyiLyst.ZminaNum = marshruty.ZminaNum\
-							WHERE\
-								marshruty.TypMarshrutu_id="+QString::number(marshrutType)+" and\
-								date(ToZvitDate) BETWEEN date('"+wMonth.begDate().toString("yyyy-MM-dd")+"') \
-								AND date('"+wMonth.endDate().toString("yyyy-MM-dd")+"')) AS s\
-								ON n.KodMarshrutu=s.KodMarshrutu_id\
-								and s.GrafikNum = n.GrafikNum\
-								and s.ZminaNum = n.ZminaNum\
-								GROUP BY n.KodMarshrutu \
-								ORDER BY n.KodMarshrutu");
+			query.exec("SELECT '', '', n.KodMarshrutu, n.MarshrutNapryamok, \
+							sum(DATEDIFF(date(s.DataZaizdu), date(s.DataVyizdu))+1) AS dniVRob,\
+							sum(time_to_sec(if (s.ChasVNaryadi IS NULL, 0,s.ChasVNaryadi ))\
+									+ time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godNaLiniyi,\
+							sum(time_to_sec(if (s.ChasVRezervi IS NULL, 0,s.ChasVRezervi ))) AS godPoGraf,\
+							sum(s.ZagalnProbig) AS probigZagaln,\
+							sum(s.ZagalnProbig-s.NulyovyiProbig) AS plantyiProbig, sum(s.KilkProdKvytkiv+s.KilkProdKvytkivAutoStat) AS pasajyry,\
+							sum(s.curDniVRozyizdi) AS dniVRozizdi, sum(s.PlanNaZminu) AS vyruchkaPlanova, '',\
+							sum(s.PilgoviPasajyry) AS pilgPasajyry, sum(s.PlanRozhidPalnogo) AS rozhidPalnogoPoNormi,\
+							sum(s.FactRozhidPalnogo) AS rozhidPalnogoFact, sum(s.VartProdKvytkiv) AS vyruchkaFact,\
+							sum(s.VartProdKvytkivAutoStat) AS vyruchkaFactAS, sum(s.ZapravkaZaGotivku) AS ZaprGotivkou\
+						FROM\
+							(SELECT * FROM marshruty WHERE TypMarshrutu_Id="+QString::number(marshrutType)+") AS n\
+							LEFT JOIN (SELECT shlyahovyiLyst.*, marshruty.TypMarshrutu_id, if(shlyahovyiLyst.TypPoNochivli_id=2,1,0) AS curDniVRozyizdi FROM shlyahovyiLyst\
+							LEFT JOIN marshruty ON shlyahovyiLyst.KodMarshrutu_id = marshruty.KodMarshrutu\
+							and shlyahovyiLyst.GrafikNum = marshruty.GrafikNum\
+							and shlyahovyiLyst.ZminaNum = marshruty.ZminaNum\
+						WHERE\
+							marshruty.TypMarshrutu_id="+QString::number(marshrutType)+" and\
+							date(ToZvitDate) BETWEEN date('"+wMonth.begDate().toString("yyyy-MM-dd")+"') \
+							AND date('"+wMonth.endDate().toString("yyyy-MM-dd")+"')) AS s\
+							ON n.KodMarshrutu=s.KodMarshrutu_id\
+							and s.GrafikNum = n.GrafikNum\
+							and s.ZminaNum = n.ZminaNum\
+						GROUP BY n.KodMarshrutu \
+						ORDER BY n.KodMarshrutu");
 		
 			int iVal;
 			double dVal;
@@ -1440,7 +1437,7 @@ void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDat
 				table->insertRows(row, 1);
 				QSqlRecord rec = query.record();
 			
-			QString str;
+				QString str;
 				tableCell.setAlignment(Qt::AlignCenter);
 				tableCell.set(row,0,wCounter++, textCharFormat);
 				tableCell.setAlignment(Qt::AlignRight);
@@ -1534,15 +1531,11 @@ void UPrintDocs_APark::print_zvedenaVidomistPoTupahMarshrutivZaMisyac(QDate vDat
 			
 	}
 	
-			printform->printer()->setOrientation(QPrinter::Landscape);
-			printform->printer()->setDocName("«ведена в≥дом≥сть по дорожн≥х листах за м≥с€ць");
-			printform->printer()->setPageMargins( 7, 10, 4, 20, QPrinter::Millimeter );
+	printform->printer()->setOrientation(QPrinter::Landscape);
+	printform->printer()->setDocName("«ведена в≥дом≥сть по дорожн≥х листах за м≥с€ць");
+	printform->printer()->setPageMargins( 7, 10, 4, 20, QPrinter::Millimeter );
 			
-			delete postup;
-			
-			printform->show();
-		
-	
+	printform->show();
 }
 //--------------------utech--------------------utech--------------------utech--------------------
 void UPrintDocs_APark::print_zvitProZdanuVyruchkuGotivkoyuZaMisyac(QDate vDate)

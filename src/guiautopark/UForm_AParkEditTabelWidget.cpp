@@ -81,12 +81,15 @@ void UForm_AParkEditTabelWidget::populateTabel()
 		svIndex << wMonth.begDate().daysTo(query.value(0).toDate());
 	
 	// «аповненн€ вертикального заголовка
-	query.exec("SELECT count(*) FROM npr WHERE Posada_id=10");
+	query.exec("SELECT count(*) FROM npr WHERE Posada_id=10 \
+				AND curdate() BETWEEN date(data_pruin_na_rob) \
+				AND date(if(date(data_zvilnenia) is null, date('2030-01-01'), date(data_zvilnenia)))");
 	query.next();
 	int rowCount = query.value(0).toInt(), row;
 	ui.tableWidget_tabel->setRowCount(rowCount);
-	query.exec("SELECT id, Prizv, Imia, Pobatk FROM npr	\
-				WHERE Posada_id=10 \
+	query.exec("SELECT npr.id, Prizv, Imia, Pobatk FROM npr \
+				WHERE Posada_id=10 AND curdate() BETWEEN date(data_pruin_na_rob) \
+				AND date(if(date(data_zvilnenia) is null, date('2030-01-01'), date(data_zvilnenia))) \
 				ORDER BY Naparnyky, Prizv, Imia, Pobatk");
 	for (row=0; row<rowCount && query.next(); row++){
 		str = query.value(1).toString();
