@@ -39,7 +39,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 						<< "Num_dit"
 						<< "Ozn_pilgy"
 						<< "Data_pruin_na_rob"
-						<< "data_zvilnenia"
+	//					<< "data_zvilnenia"
 						<< "Klasnist_vodiya"
 						<< "VidsDoplaty"
 						<< "Alimenty"
@@ -69,7 +69,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	twExt->addColAlignment("Num_dit", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("Ozn_pilgy", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("Data_pruin_na_rob", Qt::AlignVCenter | Qt::AlignRight);
-	twExt->addColAlignment("data_zvilnenia", Qt::AlignVCenter | Qt::AlignRight);
+	//twExt->addColAlignment("data_zvilnenia", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("Klasnist_vodiya", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("VidsDoplaty", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("Alimenty", Qt::AlignVCenter | Qt::AlignRight);
@@ -151,7 +151,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	
 	twExt->setItemDelegateForColumn("Data_nar", new UDateTimeDelegate(ui.tableWidget_PerelikPracivnykiv, "dd.MM.yyyy"));
 	twExt->setItemDelegateForColumn("Data_pruin_na_rob", new UDateTimeDelegate(ui.tableWidget_PerelikPracivnykiv, "dd.MM.yyyy"));
-	twExt->setItemDelegateForColumn("data_zvilnenia", new UDateTimeDelegate(ui.tableWidget_PerelikPracivnykiv, "dd.MM.yyyy"));
+	//twExt->setItemDelegateForColumn("data_zvilnenia", new UDateTimeDelegate(ui.tableWidget_PerelikPracivnykiv, "dd.MM.yyyy"));
 	
 	twExt->setItemDelegateForColumn("Rozryad", new USpinBoxDelegate(0,5, ui.tableWidget_PerelikPracivnykiv));
 	twExt->setItemDelegateForColumn("Ozn_pilgy", new USpinBoxDelegate(0,5, ui.tableWidget_PerelikPracivnykiv));
@@ -188,7 +188,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	twExt->setColumnWidth("Num_dit", 80);
 	twExt->setColumnWidth("Ozn_pilgy", 50);
 	twExt->setColumnWidth("Data_pruin_na_rob", 80);
-	twExt->setColumnWidth("data_zvilnenia", 80);
+	//twExt->setColumnWidth("data_zvilnenia", 80);
 	twExt->setColumnWidth("Klasnist_vodiya", 90);
 	twExt->setColumnWidth("VidsDoplaty", 80);
 	twExt->setColumnWidth("Alimenty", 80);

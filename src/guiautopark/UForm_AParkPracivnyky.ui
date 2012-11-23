@@ -904,11 +904,6 @@
           </column>
           <column>
            <property name="text">
-            <string>Дата звільн.</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
             <string>Класн.водія%</string>
            </property>
           </column>
