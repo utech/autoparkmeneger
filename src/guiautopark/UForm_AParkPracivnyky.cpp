@@ -12,6 +12,7 @@
 #include "UPrintDocs_APark.h"
 #include <UStandardDelegate>
 #include "UDialog_AParkDateFilter.h"
+#include "UDialogYMFilter.h"
 
 #include <QtDebug>
 //--------------------utech--------------------utech--------------------utech--------------------
@@ -39,7 +40,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 						<< "Num_dit"
 						<< "Ozn_pilgy"
 						<< "Data_pruin_na_rob"
-	//					<< "data_zvilnenia"
+						<< "data_zvilnenia"
 						<< "Klasnist_vodiya"
 						<< "VidsDoplaty"
 						<< "Alimenty"
@@ -69,7 +70,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	twExt->addColAlignment("Num_dit", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("Ozn_pilgy", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("Data_pruin_na_rob", Qt::AlignVCenter | Qt::AlignRight);
-	//twExt->addColAlignment("data_zvilnenia", Qt::AlignVCenter | Qt::AlignRight);
+	twExt->addColAlignment("data_zvilnenia", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("Klasnist_vodiya", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("VidsDoplaty", Qt::AlignVCenter | Qt::AlignRight);
 	twExt->addColAlignment("Alimenty", Qt::AlignVCenter | Qt::AlignRight);
@@ -84,6 +85,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	twExt->addColAlignment("Naparnyky", Qt::AlignVCenter | Qt::AlignRight);
 	
 	ui.spinBox_TabNumber->setReadOnly(true);
+	ui.dateEdit_dataZvilnenia->setReadOnly(true);
 	twExt->insertWidget(ui.spinBox_TabNumber, "Id");
 	twExt->insertWidget(ui.lineEdit_prizv, "Prizv");
 	twExt->insertWidget(ui.lineEdit_imya, "Imia");
@@ -100,6 +102,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	twExt->insertWidget(ui.spinBox_kilkistDitey, "Num_dit");
 	twExt->insertWidget(ui.spinBox_oznakaPilgy, "Ozn_pilgy");
 	twExt->insertWidget(ui.dateEdit_dataPryinyattyaNaRobotu, "Data_pruin_na_rob");
+	twExt->insertWidget(ui.dateEdit_dataZvilnenia, "data_zvilnenia");
 	twExt->insertWidget(ui.doubleSpinBox_klasnistVodiya, "Klasnist_vodiya");
 	twExt->insertWidget(ui.doubleSpinBox_vidsDoplaty, "VidsDoplaty");
 	twExt->insertWidget(ui.doubleSpinBox_alimenty, "Alimenty");
@@ -151,8 +154,8 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	
 	twExt->setItemDelegateForColumn("Data_nar", new UDateTimeDelegate(ui.tableWidget_PerelikPracivnykiv, "dd.MM.yyyy"));
 	twExt->setItemDelegateForColumn("Data_pruin_na_rob", new UDateTimeDelegate(ui.tableWidget_PerelikPracivnykiv, "dd.MM.yyyy"));
-	//twExt->setItemDelegateForColumn("data_zvilnenia", new UDateTimeDelegate(ui.tableWidget_PerelikPracivnykiv, "dd.MM.yyyy"));
-	
+	twExt->setItemDelegateForColumn("data_zvilnenia", new UDateTimeDelegate(ui.tableWidget_PerelikPracivnykiv, "dd.MM.yyyy"));
+		
 	twExt->setItemDelegateForColumn("Rozryad", new USpinBoxDelegate(0,5, ui.tableWidget_PerelikPracivnykiv));
 	twExt->setItemDelegateForColumn("Ozn_pilgy", new USpinBoxDelegate(0,5, ui.tableWidget_PerelikPracivnykiv));
 	twExt->setItemDelegateForColumn("KlasVodiya", new USpinBoxDelegate(0,5, ui.tableWidget_PerelikPracivnykiv));
@@ -188,7 +191,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	twExt->setColumnWidth("Num_dit", 80);
 	twExt->setColumnWidth("Ozn_pilgy", 50);
 	twExt->setColumnWidth("Data_pruin_na_rob", 80);
-	//twExt->setColumnWidth("data_zvilnenia", 80);
+	twExt->setColumnWidth("data_zvilnenia", 1);
 	twExt->setColumnWidth("Klasnist_vodiya", 90);
 	twExt->setColumnWidth("VidsDoplaty", 80);
 	twExt->setColumnWidth("Alimenty", 80);
@@ -207,6 +210,7 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	connect(ui.pushButton_create, SIGNAL(clicked()), this, SLOT(pushButton_create_clicked()));
 	connect(ui.pushButton_delete, SIGNAL(clicked()), this, SLOT(pushButton_delete_clicked()));
 	connect(ui.pushButton_reload, SIGNAL(clicked()), twExt, SLOT(populateTable()));
+	connect(ui.pushButton_zvilnyty, SIGNAL(clicked()), this, SLOT(pushButton_zvilnyty_pracivnyka()));
 	
 	connect(twExt, SIGNAL(tableItemEdited(QTableWidgetItem *)), this, SLOT(populateDovidnykValues(QTableWidgetItem *)));
 }
@@ -230,6 +234,32 @@ void UForm_AParkPracivnyky::pushButton_delete_clicked()
 		return;
 	if (!twExt->deleteRow())
 		QMessageBox::critical(0,"Помикла видалення запису","Запис не видалено");
+}
+//--------------------utech--------------------utech--------------------utech--------------------
+void UForm_AParkPracivnyky::pushButton_zvilnyty_pracivnyka()
+{
+	if	( QMessageBox::question(
+                this,
+                "!!! Звільнення працівника !!!",
+                "Ви дійсно бажаєте звільнити працівника?",
+                "Так",
+				"Ні-ні-ні",
+                QString(), 0, 1)
+		)
+		return;
+	UDialog_AParkDateFilter *d = new UDialog_AParkDateFilter((QDate::currentDate()), "Дата звільнення", "dd.MM.yyyy");
+	if (d->exec()){
+		QDate vDate = d->date();
+		QSqlQuery query;
+		if (!query.exec("UPDATE npr SET data_zvilnenia = '"+vDate.toString("yyyy-MM-dd")+"',\
+						Pracuye = 0\
+						WHERE id= "+sqlStr(ui.spinBox_TabNumber->value())+"")) 
+		QMessageBox::critical(0,"Помикла звільнення працівника","Працівник не звільнений");
+		query.next();
+		twExt->populateTable();
+	}
+	delete d;
+		
 }
 //--------------------utech--------------------utech--------------------utech--------------------
 void UForm_AParkPracivnyky::populateDovidnykValues(QTableWidgetItem *item)

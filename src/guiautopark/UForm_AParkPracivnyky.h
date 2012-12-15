@@ -31,9 +31,11 @@ class UForm_AParkPracivnyky : public UAParkTabWidget
 		~UForm_AParkPracivnyky();
 		
 		void populateToolBar(QToolBar * tBar);
+		
   public slots:
 		void pushButton_create_clicked();
 		void pushButton_delete_clicked();
+		void pushButton_zvilnyty_pracivnyka();
 		void populateDovidnykValues(QTableWidgetItem *item);
   private:
 		Ui::UForm_AParkPracivnyky ui;
