@@ -36,6 +36,8 @@ class UForm_AParkPracivnyky : public UAParkTabWidget
 		void pushButton_create_clicked();
 		void pushButton_delete_clicked();
 		void pushButton_zvilnyty_pracivnyka();
+		void filtr_po_prizvyshchu();
+		void clearFiltr();
 		void populateDovidnykValues(QTableWidgetItem *item);
   private:
 		Ui::UForm_AParkPracivnyky ui;

@@ -211,6 +211,8 @@ UForm_AParkPracivnyky::UForm_AParkPracivnyky(int tWType, QWidget *parent)
 	connect(ui.pushButton_delete, SIGNAL(clicked()), this, SLOT(pushButton_delete_clicked()));
 	connect(ui.pushButton_reload, SIGNAL(clicked()), twExt, SLOT(populateTable()));
 	connect(ui.pushButton_zvilnyty, SIGNAL(clicked()), this, SLOT(pushButton_zvilnyty_pracivnyka()));
+	connect(ui.lineEdit_search, SIGNAL(textChanged(QString)), this, SLOT(filtr_po_prizvyshchu()));
+	connect(ui.pushButton_clearFiltr, SIGNAL(clicked(bool)), this, SLOT(clearFiltr()));
 	
 	connect(twExt, SIGNAL(tableItemEdited(QTableWidgetItem *)), this, SLOT(populateDovidnykValues(QTableWidgetItem *)));
 }
@@ -260,6 +262,25 @@ void UForm_AParkPracivnyky::pushButton_zvilnyty_pracivnyka()
 	}
 	delete d;
 		
+}
+//--------------------utech--------------------utech--------------------utech--------------------
+void UForm_AParkPracivnyky::filtr_po_prizvyshchu()
+{
+	if (ui.lineEdit_search->text().size() > 0)
+		twExt->setSqlFilter("CONCAT(if(Prizv is NULL,'',Prizv),' ' , if(Imia is NULL,'',Imia), ' ' , if(Pobatk is NULL,'',Pobatk)) LIKE '%"+(ui.lineEdit_search->text())+"%'");
+	else
+		twExt->clearSqlFilter();
+	twExt->populateTable();
+		
+}
+//--------------------utech--------------------utech--------------------utech--------------------
+void UForm_AParkPracivnyky::clearFiltr()
+{
+	ui.lineEdit_search->blockSignals(true);
+	ui.lineEdit_search->clear();
+	twExt->clearSqlFilter();
+	twExt->populateTable();
+	ui.lineEdit_search->blockSignals(false);
 }
 //--------------------utech--------------------utech--------------------utech--------------------
 void UForm_AParkPracivnyky::populateDovidnykValues(QTableWidgetItem *item)

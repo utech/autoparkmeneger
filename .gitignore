@@ -7,5 +7,6 @@ src/autopark.pro.user*
 src/Makefile
 src/object_script.autopark
 src/updater/Makefile
+install/installer.nsi
 tmp/
 install/installer.nsi

@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Автопарк менеджер"
-!define PRODUCT_VERSION "1.2.0"
+!define PRODUCT_VERSION "1.2.2"
 !define PRODUCT_PUBLISHER "Компанія УТЕХ"
 !define PRODUCT_WEB_SITE "http://utech.com.ua"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\autopark.exe"
