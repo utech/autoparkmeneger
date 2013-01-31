@@ -1082,7 +1082,7 @@ void UPrintDocs_APark::print_zvitVykorystannyaKoshtivPalne(int zvitId)
 	textCharFormat_bold.setVerticalAlignment(QTextCharFormat::AlignMiddle);
 	
 	tableCell.setAlignment(Qt::AlignLeft);
-	tableCell.set(0,1,"ЗАТВЕРДЖЕНО\nНаказ Державної податкової\nадміністрації України\n23.12.2010 № 996", textCharFormat);
+	tableCell.set(0,1,"ЗАТВЕРДЖЕНО\nНаказ Міністерства фінансів України\n05.12.2012 № 1276", textCharFormat);
 	
 	cursor.movePosition(QTextCursor::End);
 	blockFormat.setAlignment( Qt::AlignCenter );

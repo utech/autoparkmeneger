@@ -85,12 +85,19 @@ void UForm_AParkEditTabelPidrozdilivWidget::populateTabel()
 	ui.comboBox_vodiyFilter->addItem("", 0);
 	
 	// «аповненн€ вертикального заголовка
-	query.exec("SELECT count(*) FROM npr WHERE Pidrozdil_id="+sqlStr(currentPidrozdilId()));
+	query.exec("SELECT count(*) FROM npr WHERE Pidrozdil_id= "+sqlStr(currentPidrozdilId())+"  \
+				AND curdate() BETWEEN date(data_pruin_na_rob) \
+				AND date(if(date(data_zvilnenia) is null, date('2030-01-01'), date(data_zvilnenia)))");
+	//query.exec("SELECT count(*) FROM npr WHERE Pidrozdil_id="+sqlStr(currentPidrozdilId()));
 	query.next();
 	int rowCount = query.value(0).toInt(), row;
 	ui.tableWidget_tabel->setRowCount(rowCount);
-	query.exec("SELECT id, Prizv, Imia, Pobatk FROM npr WHERE Pidrozdil_id="+sqlStr(currentPidrozdilId())+" \
+	query.exec("SELECT npr.id, Prizv, Imia, Pobatk FROM npr WHERE Pidrozdil_id="+sqlStr(currentPidrozdilId())+" \
+				AND curdate() BETWEEN date(data_pruin_na_rob) \
+				AND date(if(date(data_zvilnenia) is null, date('2030-01-01'), date(data_zvilnenia))) \
 				ORDER BY Naparnyky, Prizv, Imia, Pobatk");
+	//query.exec("SELECT id, Prizv, Imia, Pobatk FROM npr WHERE Pidrozdil_id="+sqlStr(currentPidrozdilId())+" \
+	//			ORDER BY Naparnyky, Prizv, Imia, Pobatk");
 	for (row=0; row<rowCount && query.next(); row++){
 		// Populate filter combobox
 		ui.comboBox_vodiyFilter->addItem("["+query.value(0).toString()+"] "+query.value(1).toString()+" "+
