@@ -1062,6 +1062,199 @@ void UPrintDocs_APark::print_vidomistZakupivliPalnogoPoVodiyahZaMisyacVRozriziRa
 	printform->show();
 }
 //--------------------utech--------------------utech--------------------utech--------------------
+void UPrintDocs_APark::print_reyestrChekivZaPalyvnoMastylniMaterialy(QDate vDate, QDate eDate, int partnerId, int markaPalnogoId)
+{
+    printform = new UPrintForm(0, "РЕЄСТР чеків з "+vDate.toString("dd.MM.yyyy")+" по "+eDate.toString("dd.MM.yyyy"));
+	printform->printer()->setPageMargins( 10, 5, 5, 10, QPrinter::Millimeter );
+	
+	QSqlQuery query;
+	query.exec("SELECT count(*) FROM( zvitKupivliPalnogoOrders orders \
+					LEFT JOIN zvitKupivliPalnogo zvit \
+						ON zvit.id=orders.zvitKupivliPalnogo_id) \
+					where orders.CDate BETWEEN date("+sqlStr(vDate)+") and date("+sqlStr(eDate)+") \
+					and zvit.MarkaPalnogo_id= "+sqlStr(markaPalnogoId)+" \
+				    and zvit.DovPartners_id = "+sqlStr(partnerId)+"  \
+						and orders.id>0 ");
+/*WHERE year(orders.CDate)="+sqlStr(vDate.year())+" \
+					and month(orders.CDate)="+sqlStr(vDate.month())+" \
+					and zvit.MarkaPalnogo_id="+sqlStr(markaPalnogoId)+" \
+					and zvit.DovPartners_id="+sqlStr(partnerId)+" \
+					and orders.id>0");*/
+	query.next();
+	int rowCount = query.value(0).toInt();
+	int colCount = 10;
+	
+	UPostupForm *postup = new UPostupForm(0, rowCount);
+	postup->show();
+	
+	QTextCursor cursor(printform->document());
+	QTextBlockFormat blockFormat;
+	QTextTableCell cell;
+	QTextCharFormat textCharFormat, textCharFormat_bold, textCharFormat_small;
+	QFont fnt = textCharFormat_bold.font();
+	fnt.setBold(true);
+	textCharFormat_bold.setFont(fnt);
+	
+	blockFormat.setAlignment( Qt::AlignRight );
+	cursor.setBlockFormat( blockFormat );
+	textCharFormat.setFontPointSize( 7 );
+	cursor.insertText("Документ створено програмою \"Автопарк менеджер\" "+QDateTime::currentDateTime().toString("dd.MM.yyyy hh:mm"), textCharFormat);
+	blockFormat.setAlignment( Qt::AlignCenter );
+	cursor.insertBlock(blockFormat);
+	cursor.insertBlock(blockFormat);
+	textCharFormat_bold.setFontPointSize( 11 );
+	cursor.insertText("РЕЄСТР\n", textCharFormat_bold);
+	cursor.insertText("чеків за придбані паливо-мастильні матеріали\n", textCharFormat_bold);
+	query.exec("SELECT Name FROM dovPartners WHERE id="+sqlStr(partnerId));
+	query.next();
+	cursor.insertText("Нa: ", textCharFormat_bold);
+	cursor.insertText(query.value(0).toString(), textCharFormat_bold);
+
+	cursor.insertBlock(blockFormat);
+	cursor.insertBlock(blockFormat);
+	
+	textCharFormat.setFontPointSize( 10 );
+    textCharFormat_bold.setFontPointSize( 10 );
+	blockFormat.setAlignment( Qt::AlignLeft );
+	cursor.setBlockFormat( blockFormat );
+    cursor.insertText("Реквізити організації:\n", textCharFormat);
+    cursor.insertText("Індивідуальний податковий номер: ", textCharFormat);
+    cursor.insertText(OrganizIPN()+"\n", textCharFormat_bold);
+    cursor.insertText("Номер свідоцтва платника ПДВ: ", textCharFormat);
+    cursor.insertText(OrganizSvidPDVNum()+"\n", textCharFormat_bold);
+    cursor.insertText("Юридична адреса: ", textCharFormat);
+    cursor.insertText(OrganizAdresa()+"\n", textCharFormat_bold);
+    cursor.insertText("Фізична адреса: ", textCharFormat);
+    cursor.insertText(OrganizAdresa(), textCharFormat_bold);
+	//cursor.insertText("Телефон: ", textCharFormat);
+   // cursor.insertText(Organiz()+"\n", textCharFormat_bold);	
+
+    cursor.insertBlock(blockFormat);
+    cursor.insertBlock(blockFormat);
+	
+	//Створення таблиці
+	QTextTableFormat tableFormat;
+	QVector<QTextLength> constraints;
+	constraints << QTextLength(QTextLength::FixedLength, 25);
+	constraints << QTextLength(QTextLength::FixedLength, 70);
+	constraints << QTextLength(QTextLength::FixedLength, 70);
+	constraints << QTextLength(QTextLength::FixedLength, 50);
+	constraints << QTextLength(QTextLength::FixedLength, 50);
+	constraints << QTextLength(QTextLength::FixedLength, 60);
+	constraints << QTextLength(QTextLength::FixedLength, 60);
+	constraints << QTextLength(QTextLength::FixedLength, 70);
+	constraints << QTextLength(QTextLength::FixedLength, 70);
+	constraints << QTextLength(QTextLength::FixedLength, 70);
+	
+	tableFormat.setColumnWidthConstraints(constraints);
+	tableFormat.setCellSpacing(0);
+	tableFormat.setCellPadding(1);
+	tableFormat.setBorder(0.6);
+	tableFormat.setBorderBrush(QColor(Qt::black));
+	tableFormat.setHeaderRowCount(1);
+	QTextTable *table = cursor.insertTable(2 + rowCount, colCount, tableFormat);
+	UPopulateCell tableCell(table);
+	
+	blockFormat.setBottomMargin(0);
+	blockFormat.setTopMargin(0);
+	
+	//Заповнення шапки таблиці
+	textCharFormat.setFontPointSize( 8 );
+	textCharFormat.setVerticalAlignment(QTextCharFormat::AlignMiddle);
+	textCharFormat_bold.setFontPointSize( 8 );
+	textCharFormat_bold.setVerticalAlignment(QTextCharFormat::AlignMiddle);
+	
+	tableCell.setAlignment(Qt::AlignCenter);
+	tableCell.set(0,0,"№ з/п", textCharFormat);
+	tableCell.set(0,1,"Дата", textCharFormat);
+	tableCell.set(0,2,"Вид палива", textCharFormat);
+	tableCell.set(0,3,"№ АЗС", textCharFormat);
+	tableCell.set(0,4,"№ Чеку", textCharFormat);
+	tableCell.set(0,5,"К-сть л.", textCharFormat);
+	tableCell.set(0,6,"Ціна за 1 л.", textCharFormat);
+	tableCell.set(0,7,"Загальна сума", textCharFormat);
+	tableCell.set(0,8,"ПДВ", textCharFormat);
+	tableCell.set(0,9,"Сума без ПДВ", textCharFormat);
+	
+	textCharFormat.setVerticalAlignment(QTextCharFormat::AlignTop);
+	textCharFormat_bold.setVerticalAlignment(QTextCharFormat::AlignTop);
+	
+	    double dVal, allSuma = 0, allPDV = 0, allBezPDV = 0;
+	query.exec("SELECT orders.CDate, palne.MarkaName, orders.KodZapravky, \
+					   orders.DocNum, orders.Kilkist, \
+				       ROUND(orders.Suma/orders.Kilkist, 2)  AS 'cina', \
+                       orders.Suma, ROUND(orders.Suma-(orders.Suma/1.2), 2) AS 'PDV', \
+                       ROUND(orders.Suma-(orders.Suma-(orders.Suma/1.2)), 2) AS 'bez PDV' \
+				FROM zvitKupivliPalnogo zvit \
+					LEFT JOIN zvitKupivliPalnogoOrders orders \
+					ON orders.zvitKupivliPalnogo_id=zvit.id \
+					LEFT JOIN markapalnogo palne \
+					ON palne.id=zvit.MarkaPalnogo_id \
+				WHERE \
+					orders.CDate BETWEEN date("+sqlStr(vDate)+") and date("+sqlStr(eDate)+") \
+					and zvit.MarkaPalnogo_id= "+sqlStr(markaPalnogoId)+" \
+				    and zvit.DovPartners_id = "+sqlStr(partnerId)+" \
+					and orders.id>0 \
+				ORDER BY orders.CDate");
+	int row;
+	for (row = 1; row <= rowCount && query.next(); row++) {
+	    tableCell.setAlignment(Qt::AlignRight);
+		tableCell.set(row,0,row, textCharFormat);
+		
+		tableCell.set(row,1,query.value(0).toString(), textCharFormat);
+		
+		tableCell.setAlignment(Qt::AlignLeft);
+		tableCell.set(row,2,query.value(1).toString(), textCharFormat);
+		
+		tableCell.setAlignment(Qt::AlignRight);
+		tableCell.set(row,3,query.value(2).toString(), textCharFormat);
+		
+		tableCell.set(row,4,query.value(3).toInt(), textCharFormat);
+		// "Ціна"
+		tableCell.set(row,5,query.value(4).toDouble(), textCharFormat);
+		// "загальна сума"
+		tableCell.set(row,6,query.value(5).toDouble(), textCharFormat);
+		// "ПДВ"
+		dVal = query.value(6).toDouble();
+		allSuma += dVal;
+		tableCell.setDash(row,7,dVal, textCharFormat);
+		// "Без ПДВ"
+		dVal = uDToM(query.value(7).toDouble());
+		allPDV += dVal;
+		tableCell.setDash(row,8,dVal, textCharFormat);
+		
+		dVal = uDToM(query.value(8).toDouble());
+		allBezPDV += dVal;
+		tableCell.setDash(row,9,dVal, textCharFormat);
+
+		
+		postup->incPos();
+	}
+	
+	table->mergeCells(row, 0, 1, 7);
+	
+	tableCell.set(row,0,"Разом", textCharFormat);
+	// "К-сть"
+	tableCell.setDash(row,7,allSuma, textCharFormat);
+	// "Сума"
+	tableCell.setDash(row,8,allPDV, textCharFormat);
+	
+	tableCell.setDash(row,9,allBezPDV, textCharFormat);
+
+	
+	//Підписи
+	cursor.movePosition(QTextCursor::End);
+	cursor.insertBlock(blockFormat);
+	textCharFormat.setFontPointSize( 9 );
+	cursor.insertFragment(pidpysy(15, textCharFormat, QPrinter::Portrait));
+	
+	delete postup;
+	
+	printform->printer()->setDocName("Реєстр чеків з "+vDate.toString("dd.MM.yyyy")+" по "+eDate.toString("dd.MM.yyyy"));
+	printform->show();
+	
+}
+//--------------------utech--------------------utech--------------------utech--------------------
 void UPrintDocs_APark::print_reyestrChekivVidPostachalnykaPoVyduPalnogo(QDate vDate, int partnerId, int markaPalnogoId)
 {
 	printform = new UPrintForm(0, "Реєстр чеків за "+vDate.toString("MM.yyyy"));

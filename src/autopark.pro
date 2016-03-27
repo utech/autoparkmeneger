@@ -56,6 +56,7 @@ HEADERS += UDialogRegisterUser_APark.h \
 			UDialog_AParkMarkaPalnogoDateFilter.h \
 			UDialog_AParkPartnerDateFilter.h \
 			UDialog_AParkPartnerMarkaPalnogoDateFilter.h \
+			UDialog_AParkPartnerMarkaPalnogoTwoDateFilter.h \
 			UForm_AParkPartnery.h \
 			UExport_APark.h
 FORMS += UDialogRegisterUser_APark.ui \
@@ -92,6 +93,7 @@ FORMS += UDialogRegisterUser_APark.ui \
 			UDialog_AParkMarkaPalnogoDateFilter.ui \
 			UDialog_AParkPartnerDateFilter.ui \
 			UDialog_AParkPartnerMarkaPalnogoDateFilter.ui \
+			UDialog_AParkPartnerMarkaPalnogoTwoDateFilter.ui \
 			UForm_AParkPartnery.ui
 SOURCES += main_APark.cpp \
            UDialogRegisterUser_APark.cpp \
@@ -139,6 +141,7 @@ SOURCES += main_APark.cpp \
 		   UDialog_AParkMarkaPalnogoDateFilter.cpp \
 		   UDialog_AParkPartnerDateFilter.cpp \
 		   UDialog_AParkPartnerMarkaPalnogoDateFilter.cpp \
+		   UDialog_AParkPartnerMarkaPalnogoTwoDateFilter.cpp \
 		   UForm_AParkPartnery.cpp \
 		   UExport_APark.cpp
 		   

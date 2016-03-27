@@ -594,6 +594,15 @@
     <string>Друк &quot;Реєстру чеків за придбане пальне від постачальника по виду пального&quot;</string>
    </property>
   </action>
+  <action name="action_reyestrChekivZaPalyvnoMastylniMaterialy">
+   <property name="icon">
+    <iconset resource="../images/UAutoParkImg.qrc">
+     <normaloff>:/function_icon_set/function_icon_set/printer_48.png</normaloff>:/function_icon_set/function_icon_set/printer_48.png</iconset>
+   </property>
+   <property name="text">
+    <string>Друк Реєстр чеків за ПММ</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>tableWidget_zvitKupivliPalnogo</tabstop>

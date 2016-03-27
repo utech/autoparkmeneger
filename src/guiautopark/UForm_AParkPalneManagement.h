@@ -51,6 +51,7 @@ class UForm_AParkPalneManagement : public UAParkTabWidget
 		void action_printVidomistZakupivliPalnogoPoVodiyahZaMisyac_activated();
 		void action_printVidomistZakupivliPalnogoPoVodiyahZaMisyacVRozriziRahunkiv_activated();
 		void action_printReyestrChekivVidPostachalnykaPoVyduPalnogo_activated();
+		void action_reyestrChekivZaPalyvnoMastylniMaterialy_activated();
 		void action_exportInformaciiVExcel_activated();
   private:
 		Ui::UForm_AParkPalneManagement ui;

@@ -70,7 +70,7 @@ void UForm_AParkEditTabelWidget::populateTabel()
 	QTableWidgetItem *item;
 	QSqlQuery query;
 	QString str;
-	UWorkMonth wMonth(ui.dateEdit_tabelDate->date().year(), ui.dateEdit_tabelDate->date().month());
+        UWorkMonth wMonth(ui.dateEdit_tabelDate->date().year(), ui.dateEdit_tabelDate->date().month());
 	ui.dateEdit_dateFilter->setDate(wMonth.begDate());
 	//створення переліку індексів святкових днів
 	QSet<int> svIndex;

@@ -60,6 +60,7 @@ class UPrintDocs_APark
                 void print_reyestrChekivVidPostachalnyksPalneZaMisyac(int partnerId, QDate vDate);
 		void print_vidomistZakupivliPalnogoPoVodiyahZaMisyac(QDate vDate, int markaPalnogoId);
 		void print_vidomistZakupivliPalnogoPoVodiyahZaMisyacVRozriziRahunkiv(QDate vDate);
+		void print_reyestrChekivZaPalyvnoMastylniMaterialy(QDate vDate, QDate eDate, int partnerId, int markaPalnogoId);
 		void print_reyestrChekivVidPostachalnykaPoVyduPalnogo(QDate vDate, int partnerId, int markaPalnogoId);
 		
 		QTextDocumentFragment create_backSideLystkaRegulyarnostiRuhu();

@@ -17,6 +17,7 @@
 #include "UAutoParkMeneger_APark.h"
 #include "UExport_APark.h"
 #include "UDialog_AParkPartnerMarkaPalnogoDateFilter.h"
+#include "UDialog_AParkPartnerMarkaPalnogoTwoDateFilter.h"
 
 #include <U2List>
 
@@ -188,6 +189,8 @@ UForm_AParkPalneManagement::UForm_AParkPalneManagement(int tWType, QWidget *pare
 				this, SLOT(action_printVidomistZakupivliPalnogoPoVodiyahZaMisyacVRozriziRahunkiv_activated()));
 	connect(ui.action_printReyestrChekivVidPostachalnykaPoVyduPalnogo, SIGNAL(activated()), 
 				this, SLOT(action_printReyestrChekivVidPostachalnykaPoVyduPalnogo_activated()));
+	connect(ui.action_reyestrChekivZaPalyvnoMastylniMaterialy, SIGNAL(activated()), 
+				this, SLOT(action_reyestrChekivZaPalyvnoMastylniMaterialy_activated()));
 	
 	connect(ui.action_exportInformaciiVExcel, SIGNAL(activated()), 
 				this, SLOT(action_exportInformaciiVExcel_activated()));
@@ -203,6 +206,7 @@ void UForm_AParkPalneManagement::populateToolBar(QToolBar * tBar)
     tBar->addAction(ui.action_printVidomistZakupivliPalnogoPoVodiyahZaMisyac);
     tBar->addAction(ui.action_printVidomistZakupivliPalnogoPoVodiyahZaMisyacVRozriziRahunkiv);
 	tBar->addAction(ui.action_printReyestrChekivVidPostachalnykaPoVyduPalnogo);
+	tBar->addAction(ui.action_reyestrChekivZaPalyvnoMastylniMaterialy);
     tBar->addAction(ui.action_exportInformaciiVExcel);
 }
 //--------------------utech--------------------utech--------------------utech--------------------
@@ -463,6 +467,18 @@ void UForm_AParkPalneManagement::action_printReyestrChekivVidPostachalnykaPoVydu
 	
 	
 	
+}
+//--------------------utech--------------------utech--------------------utech--------------------
+void UForm_AParkPalneManagement::action_reyestrChekivZaPalyvnoMastylniMaterialy_activated()
+{
+	UDialog_AParkPartnerMarkaPalnogoTwoDateFilter *d = new UDialog_AParkPartnerMarkaPalnogoTwoDateFilter(QDate::currentDate(), QDate::currentDate(), "¬иб≥р рекв≥зит≥в дл€ реЇстру", "dd.MM.yyyy", this);
+	if (d->exec()) {
+	    UPrintDocs_APark *printDocs = new UPrintDocs_APark();
+		printDocs->print_reyestrChekivZaPalyvnoMastylniMaterialy(d->date(), d->date1(), d->partnerId(), d->markaPalnogoId());
+		connect(this, SIGNAL(mainWindowClosed()), printDocs->printform, SLOT(close()));
+		delete printDocs;
+	}
+	delete d;
 }
 //--------------------utech--------------------utech--------------------utech--------------------
 void UForm_AParkPalneManagement::action_exportInformaciiVExcel_activated()
